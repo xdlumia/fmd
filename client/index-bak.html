@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>楼脉动首页</title>
+<meta name="keywords" content="#" />
+<meta name="description" content="#" />
+<meta charset="utf-8" />
+<!-- 强制使用高版本浏览器渲染 -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<!-- 强制使用webkit -->
+<meta name="renderer" content="webkit">
+<!-- 禁止百度移动端转码 -->
+<meta http-equiv="Cache-Control" content="no-transform " />
+<!-- 清除缓存刷新 -->
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<link rel="stylesheet" type="text/css" href="assets/fonts/iconfont.css">
+<link rel="stylesheet" type="text/css" href="assets/css/timepicker.css">
+<link rel="stylesheet" type="text/css" href="assets/css/base.css">
+<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body>
+<!--[if lte IE 9]>
+<div class="old-browser-popup" >
+	亲!您当前正在使用较旧版本的IE浏览器，为了保证你的浏览体验，建议你使用
+	<a href="http://sw.bos.baidu.com/sw-search-sp/software/b168073fdd275/ChromeStandalone_60.0.3112.90_Setup.exe" rel="nofollow"  target="_blank"><img src="images/ico-chrome.png">谷歌浏览器</a>
+	或
+	<a>webkit内核的浏览器</a>
+	<span class="old-close-btn"><i class="iconfont icon-close"></i></span>
+</div>
+<![endif]-->
+<!-- 头部导航 -->
+<div class="header">
+  <div class="banner-opacity">
+  	<div class="l-row">
+  		<div class="header-top">
+  			<div class="fl">
+  				<a href="#" class="logo"><img src="images/logo.png" alt=""></a>
+  				<span class="loca"><i class="iconfont icon-dingwei"></i><var class="loca-name">正在定位中</var></span>
+  			</div>
+  			<ul class="fr nav">
+  				<li><a href="ershoufang">二手房</a></li>
+  				<li><a href="zufang">租房</a></li>
+  				<li><a href="maimai">商业买卖</a></li>
+  				<li><a href="zulin">商业租赁</a></li>
+  				<li><a href="xiaoqu">小区</a></li>
+  				<li><a href="shangquan">商圈</a></li>
+  				<li><a href="jingjiren">经纪人</a></li>
+  				<li><a href="zhaopin">诚聘精英</a></li>
+  			</ul>
+  		</div>
+  		<div class="header-text">
+  			<h2>北京金色时光</h2>
+  			<ul class="text-scroll">
+  				<li>楼脉动真实在售商业用房<b>763091</b></li>
+  				<li>楼脉动真实在售商业用房<b>763092</b></li>
+  				<li>楼脉动真实在售商业用房<b>763093</b></li>
+  			</ul>
+  		</div>
+  		<div class="search-main">
+  			<div class="menu" id="ser-menu">
+  				<ul>
+  					<li class="act item" data-type="请输入区域、商圈或楼盘名开始找房" data-btn="开始找房" param="esf">
+  						<span>找二手房</span>
+  					</li>
+  					<li class="item" data-type="请输入区域、商圈或楼盘名开始找房" data-btn="开始找房" param="zf">
+  						<span>找租房</span>
+  					</li>
+  					<li class="item" data-type="请输入楼盘名称" data-btn="开始搜索" param="lp">
+  						<span>找楼盘</span>
+  					</li>
+  					<li class="item" data-type="请输入区域、商圈或楼盘名开始找房" data-btn="开始找房" param="xzl">
+  						<span>找写字楼</span>
+  					</li>
+  					<li class="item" data-type="请输入区域、商圈或楼盘名开始找房" data-btn="开始找房" param="sp">
+  						<span>找商铺</span>
+  					</li>
+  					<li class="item" data-type="请输入您关心的问题" data-btn="开始搜索" param="wt">
+  						<span>搜问题</span>
+  					</li>
+  				</ul>
+  				<i class="arrow"></i>
+  			</div>
+  			<div class="search-box">
+  				<input type="text" class="search-val fl" placeholder="请输入区域、商圈或楼盘名开始找房">
+  				<input type="button" class="search-btn fl" value="开始找房">
+  			</div>
+  		</div>
+  	</div>
+  </div>
+</div>
+
+<div class="content">
+	<!-- 热门二手房 -->
+	<div class="hot-house">
+		<div class="l-row">
+		   <h3 class="title">热门二手房</h3>
+		  <ul class="hot-house-box esfh" id="hotesf">
+	        <li class="col-3">
+	        	<a class="hot-house-img">
+	        		<img src="images/01.png" alt="">
+	        		<div class="gdshadow">加载中...</div>
+	        		<div class="foucs-tab">加载中...</div>
+	        	</a>
+	        	<div class="hot-house-info">
+	        		<div class="info"><span>加载中...</span></div>
+	        		<div class="hh-price"><span class="hh-sum">加载中...</div>
+	        	</div>
+	        </li>
+            <li class="col-3">
+	        	<a class="hot-house-img">
+	        		<img src="images/01.png" alt="">
+	        		<div class="gdshadow">加载中...</div>
+	        		<div class="foucs-tab">加载中...</div>
+	        	</a>
+	        	<div class="hot-house-info">
+	        		<div class="info"><span>加载中...</span></div>
+	        		<div class="hh-price"><span class="hh-sum">加载中...</div>
+	        	</div>
+	        </li><li class="col-3">
+	        	<a class="hot-house-img">
+	        		<img src="images/01.png" alt="">
+	        		<div class="gdshadow">加载中...</div>
+	        		<div class="foucs-tab">加载中...</div>
+	        	</a>
+	        	<div class="hot-house-info">
+	        		<div class="info"><span>加载中...</span></div>
+	        		<div class="hh-price"><span class="hh-sum">加载中...</div>
+	        	</div>
+	        </li><li class="col-3">
+	        	<a class="hot-house-img">
+	        		<img src="images/01.png" alt="">
+	        		<div class="gdshadow">加载中...</div>
+	        		<div class="foucs-tab">加载中...</div>
+	        	</a>
+	        	<div class="hot-house-info">
+	        		<div class="info"><span>加载中...</span></div>
+	        		<div class="hh-price"><span class="hh-sum">加载中...</div>
+	        	</div>
+	        </li><li class="col-3">
+	        	<a class="hot-house-img">
+	        		<img src="images/01.png" alt="">
+	        		<div class="gdshadow">加载中...</div>
+	        		<div class="foucs-tab">加载中...</div>
+	        	</a>
+	        	<div class="hot-house-info">
+	        		<div class="info"><span>加载中...</span></div>
+	        		<div class="hh-price"><span class="hh-sum">加载中...</div>
+	        	</div>
+	        </li><li class="col-3">
+	        	<a class="hot-house-img">
+	        		<img src="images/01.png" alt="">
+	        		<div class="gdshadow">加载中...</div>
+	        		<div class="foucs-tab">加载中...</div>
+	        	</a>
+	        	<div class="hot-house-info">
+	        		<div class="info"><span>加载中...</span></div>
+	        		<div class="hh-price"><span class="hh-sum">加载中...</div>
+	        	</div>
+	        </li>
+	       </ul>
+		</div>
+	</div>	
+	<!-- 热门小区 -->
+	<div class="hot-loupan hot-house">
+		<div class="l-row">
+		   <h3 class="title">热门小区</h3>
+		  <ul class="hot-loupan-main" id="hotxq">
+	        <li class="col-4">
+	        	<a href="#" class="hot-loupan-img">
+	        		<img src="images/loupan01.png" alt="">
+                    <div class="gdshadow"></div>
+                    <div class="gdshadow-text">
+                    	<div class="gd-title">加载中...</div>
+                    	<div class="gdshadow-text-info">
+                    		<p>加载中...</p>
+                    		<p>加载中...</p>
+                    	</div>
+                    </div>
+	        	</a>
+	        </li>
+	        <li class="col-4">
+	        	<a href="#" class="hot-loupan-img">
+	        		<img src="images/loupan01.png" alt="">
+                    <div class="gdshadow"></div>
+                    <div class="gdshadow-text">
+                    	<div class="gd-title">新龙城</div>
+                    	<div class="gdshadow-text-info">
+                    		<p>加载中...</p>
+                    		<p>加载中...</p>
+                    	</div>
+                    </div>
+	        	</a>
+	        </li>
+	        <li class="col-4">
+	        	<a href="#" class="hot-loupan-img">
+	        		<img src="images/loupan01.png" alt="">
+                    <div class="gdshadow"></div>
+                    <div class="gdshadow-text">
+                    	<div class="gd-title">新龙城</div>
+                    	<div class="gdshadow-text-info">
+                    		<p>加载中...</p>
+                    		<p>加载中...</p>
+                    	</div>
+                    </div>
+	        	</a>
+	        </li>
+	        <li class="col-4">
+	        	<a href="#" class="hot-loupan-img">
+	        		<img src="images/loupan01.png" alt="">
+                    <div class="gdshadow"></div>
+                    <div class="gdshadow-text">
+                    	<div class="gd-title">新龙城</div>
+                    	<div class="gdshadow-text-info">
+                    		<p>加载中...</p>
+                    		<p>加载中...</p>
+                    	</div>
+                    </div>
+	        	</a>
+	        </li>
+	       </ul>
+		</div>
+	</div>
+	<!-- 热门写字楼商铺 -->
+	<div class="hot-house">
+		<div class="l-row">
+		   <h3 class="title">热门写字楼商铺</h3>
+		  <ul class="hot-house-box">
+	        <li class="col-3">
+	        	<a class="hot-house-img">
+	        		<img src="images/01.png" alt="">
+	        		<div class="gdshadow">龙熙顺景 上叠边户 570万</div>
+	        		<div class="foucs-tab">精装修</div>
+	        	</a>
+	        	<div class="hot-house-info">
+	        		<div class="info"><span class="bornone">售价：<b>6125</b>元/m²</span><span class="fr">租价：<b>6.5</b>元/m²/天</span></div>
+	        		<div class="hh-price">可租售面积：92-620m²</div>
+	        	</div>
+	        </li>
+	        <li class="col-3">
+	        	<a class="hot-house-img">
+	        		<img src="images/01.png" alt="">
+	        		<div class="gdshadow">龙熙顺景 上叠边户 570万</div>
+	        		<div class="foucs-tab">精装修</div>
+	        	</a>
+	        	<div class="hot-house-info">
+	        		<div class="info"><span class="bornone">售价：<b>6125</b>元/m²</span><span class="fr">租价：<b>6.5</b>元/m²/天</span></div>
+	        		<div class="hh-price">可租售面积：92-620m²</div>
+	        	</div>
+	        </li>
+	        <li class="col-3">
+	        	<a class="hot-house-img">
+	        		<img src="images/01.png" alt="">
+	        		<div class="gdshadow">龙熙顺景 上叠边户 570万</div>
+	        		<div class="foucs-tab">精装修</div>
+	        	</a>
+	        	<div class="hot-house-info">
+	        		<div class="info"><span class="bornone">售价：<b>6125</b>元/m²</span><span class="fr">租价：<b>6.5</b>元/m²/天</span></div>
+	        		<div class="hh-price">可租售面积：92-620m²</div>
+	        	</div>
+	        </li>
+	        <li class="col-3">
+	        	<a class="hot-house-img">
+	        		<img src="images/01.png" alt="">
+	        		<div class="gdshadow">龙熙顺景 上叠边户 570万</div>
+	        		<div class="foucs-tab">精装修</div>
+	        	</a>
+	        	<div class="hot-house-info">
+	        		<div class="info"><span class="bornone">售价：<b>6125</b>元/m²</span><span class="fr">租价：<b>6.5</b>元/m²/天</span></div>
+	        		<div class="hh-price">可租售面积：92-620m²</div>
+	        	</div>
+	        </li>
+	        <li class="col-3">
+	        	<a class="hot-house-img">
+	        		<img src="images/01.png" alt="">
+	        		<div class="gdshadow">龙熙顺景 上叠边户 570万</div>
+	        		<div class="foucs-tab">精装修</div>
+	        	</a>
+	        	<div class="hot-house-info">
+	        		<div class="info"><span class="bornone">售价：<b>6125</b>元/m²</span><span class="fr">租价：<b>6.5</b>元/m²/天</span></div>
+	        		<div class="hh-price">可租售面积：92-620m²</div>
+	        	</div>
+	        </li>
+	        <li class="col-3">
+	        	<a class="hot-house-img">
+	        		<img src="images/01.png" alt="">
+	        		<div class="gdshadow">龙熙顺景 上叠边户 570万</div>
+	        		<div class="foucs-tab">精装修</div>
+	        	</a>
+	        	<div class="hot-house-info">
+	        		<div class="info"><span class="bornone">售价：<b>6125</b>元/m²</span><span class="fr">租价：<b>6.5</b>元/m²/天</span></div>
+	        		<div class="hh-price">可租售面积：92-620m²</div>
+	        	</div>
+	        </li>
+
+	       </ul>
+		</div>
+	</div>	
+	<!-- 热门商圈-->
+	<div class="hot-loupan hot-house">
+		<div class="l-row">
+		   <h3 class="title">热门商圈</h3>
+		  <ul class="hot-loupan-main">
+	        <li class="col-4">
+	        	<a href="#" class="hot-loupan-img">
+	        		<img src="images/loupan01.png" alt="">
+                    <div class="gdshadow"></div>
+                    <div class="gdshadow-text">
+                    	<div class="gd-title">新龙城</div>
+                    	<div class="gdshadow-text-info">
+                    		<p>在售写字楼<b>155</b>套</p>
+                    		<p>待租写字楼<b>155</b>套</p>
+                    		<p>在售商铺<b>155</b>套</p>
+                    		<p>待租商铺<b>155</b>套</p>
+                    	</div>
+                    </div>
+	        	</a>
+	        </li>
+	        <li class="col-4">
+	        	<a href="#" class="hot-loupan-img">
+	        		<img src="images/loupan01.png" alt="">
+                    <div class="gdshadow"></div>
+                    <div class="gdshadow-text">
+                    	<div class="gd-title">新龙城</div>
+                    	<div class="gdshadow-text-info">
+                    		<p>在售写字楼<b>155</b>套</p>
+                    		<p>待租写字楼<b>155</b>套</p>
+                    		<p>在售商铺<b>155</b>套</p>
+                    		<p>待租商铺<b>155</b>套</p>
+                    	</div>
+                    </div>
+	        	</a>
+	        </li>
+	        <li class="col-4">
+	        	<a href="#" class="hot-loupan-img">
+	        		<img src="images/loupan01.png" alt="">
+                    <div class="gdshadow"></div>
+                    <div class="gdshadow-text">
+                    	<div class="gd-title">新龙城</div>
+                    	<div class="gdshadow-text-info">
+                    		<p>在售写字楼<b>155</b>套</p>
+                    		<p>待租写字楼<b>155</b>套</p>
+                    		<p>在售商铺<b>155</b>套</p>
+                    		<p>待租商铺<b>155</b>套</p>
+                    	</div>
+                    </div>
+	        	</a>
+	        </li>
+	        <li class="col-4">
+	        	<a href="#" class="hot-loupan-img">
+	        		<img src="images/loupan01.png" alt="">
+                    <div class="gdshadow"></div>
+                    <div class="gdshadow-text">
+                    	<div class="gd-title">新龙城</div>
+                    	<div class="gdshadow-text-info">
+                    		<p>在售写字楼<b>155</b>套</p>
+                    		<p>待租写字楼<b>155</b>套</p>
+                    		<p>在售商铺<b>155</b>套</p>
+                    		<p>待租商铺<b>155</b>套</p>
+                    	</div>
+                    </div>
+	        	</a>
+	        </li>
+	       </ul>
+		</div>
+	</div>	
+	<!-- 资讯中心 -->
+	<div class="hot-house news">
+		<div class="l-row">
+		   <h3 class="title">资讯中心</h3>
+		  <ul class="hot-house-box">
+	        <li class="col-3">
+	        	<div class="hot-house-img slide-container">
+	        	  <!-- 幻灯片内容 -->
+	        	  <div class="slide-wrap">
+	        		<div class="slide-item">
+	        			<img src="images/pic01.png" alt="">
+	        			<div class="slide-info">
+	        				<div class="slide-title">楼脉动初级"大扫除"</div>
+	        				<div class="slide-con">3月28日早9：00，随着一生钟响，楼脉动启动了春季大扫除行动……</div>
+	        			</div>
+	        		</div>
+	        		<div class="slide-item">
+	        			<img src="images/pic01.png" alt="">
+	        			<div class="slide-info">
+	        				<div class="slide-title">楼脉动初级"大扫除"</div>
+	        				<div class="slide-con">3月28日早9：00，随着一生钟响，楼脉动启动了春季大扫除行动……</div>
+	        			</div>
+	        		</div>
+	        		<div class="slide-item">
+	        			<img src="images/pic01.png" alt="">
+	        			<div class="slide-info">
+	        				<div class="slide-title">楼脉动初级"大扫除"</div>
+	        				<div class="slide-con">3月28日早9：00，随着一生钟响，楼脉动启动了春季大扫除行动……</div>
+	        			</div>
+	        		</div>
+	        		<div class="slide-item">
+	        			<img src="images/pic01.png" alt="">
+	        			<div class="slide-info">
+	        				<div class="slide-title">楼脉动初级"大扫除"</div>
+	        				<div class="slide-con">3月28日早9：00，随着一生钟响，楼脉动启动了春季大扫除行动……</div>
+	        			</div>
+	        		</div>
+	        	  </div>
+	        	  <a class="morebtn">更多资讯>></a>
+	        	</div>
+	        </li>
+	        <li class="col-3">
+	        	<a class="hot-house-img">
+	        		<img src="images/pic02.jpg" alt="">
+	        		<div class="bg-title">利好！环京北三县纳入副中心规划</div>
+	        	</a>
+	        	<div class="news-box">
+	        	    <h4 class="title">房产资讯<a href="#" class="fr">更多资讯>></a></h3>
+	        		<span class="new-li"><a href="#">万科售楼部被砸！万科要打响2017年降价第一枪？</a><em class="date">03-27</em></span>
+	        		<span class="new-li"><a href="#">万科售楼部被砸！万科要打响2017年降价第一枪？</a><em class="date">03-27</em></span>
+	        		<span class="new-li"><a href="#">万科售楼部被砸！万科要打响2017年降价第一枪？</a><em class="date">03-27</em></span>
+	        		<span class="new-li"><a href="#">万科售楼部被砸！万科要打响2017年降价第一枪？</a><em class="date">03-27</em></span>
+	        		<span class="new-li"><a href="#">万科售楼部被砸！万科要打响2017年降价第一枪？</a><em class="date">03-27</em></span>
+	        	</div>
+	        </li>
+
+	        <li class="col-3">
+	        	<a class="hot-house-img">
+	        		<img src="images/pic02.jpg" alt="">
+	        		<div class="bg-title">利好！环京北三县纳入副中心规划</div>
+	        	</a>
+	        	<div class="news-box">
+	        	    <h4 class="title">房产百科<a href="#" class="fr">更多资讯>></a></h3>
+	        		<span class="new-li"><a href="#">看了少奋斗十年，秘而不传的升职加薪办公室风水</a><em class="date">03-27</em></span>
+	        		<span class="new-li"><a href="#">企业厂房选址的六大秘籍</a><em class="date">03-27</em></span>
+	        		<span class="new-li"><a href="#">入驻“纯租赁”写字楼对企业有何好处？</a><em class="date">03-27</em></span>
+	        		<span class="new-li"><a href="#">在北京企业选址为什么如此重要？</a><em class="date">03-27</em></span>
+	        		<span class="new-li"><a href="#">剖析优质写字楼投资应该具备的七大要素！</a><em class="date">03-27</em></span>
+	        	</div>
+	        </li>
+	       </ul>
+		</div>
+	</div>
+</div>
+<div class="footer">
+	<div class="footer-nav">
+	  <ul class="l-row">
+		<li><a href="#">关于楼脉动</a></li>
+		<li><a href="#">网站地图</a></li>
+		<li><a href="#">联系我们</a></li>
+	  </ul>
+	</div>
+	<div class="l-row">
+	  <div class="footer-user">
+          自定义内容
+	  </div>
+	  <!-- <div class="fr">
+	  	 <div class="contact-fl fl">
+	  	 	<p>官方客服：400-666-9988</p>
+	  	 	<p>周一至周六</p>
+	  	 	<p>（早9：00-晚18：00）</p>
+	  	 </div>
+	  	 <div class="contact-fr fr">
+	  	 	<img src="images/ewm.png" alt="">
+	  	 </div>
+	  </div> -->
+	</div>
+</div>
+
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js?version=1.12.1"></script> <!-- jquery ui -->
+<script type="text/javascript" src="js/jquery-ui-timepicker-addon.js"></script> <!-- 日期插件 -->
+<script src="js/common.js"></script>
+<script type="text/javascript">
+
+
+
+$(document).ready(function(){
+	loadPageData();
+	// 幻灯片
+	lSlide(true,false,true);
+	// baner文字滚动效果
+	setInterval(function(){
+		$('.text-scroll li').eq(0).animate({height:"0"}, 700);
+		// clearInterval(timer);
+
+		timer = setTimeout(function(){
+			$('.text-scroll li').css('height','35px');
+		$('.text-scroll').append($('.text-scroll li').eq(0));
+		
+		},800)
+	},4000)
+	// 首页热门楼房鼠标滑过效果
+	var lengths="";
+	  $(document).on("mouseenter",".hot-loupan-img",function(){  
+	  	var aPh = $(this).find('p');
+		lengths = aPh.length;
+		$(this).find('.gdshadow-text-info').css('height',lengths*30+'px');
+		for(var i = 0; i < lengths; i++){
+			aPh[i].style.transition ='.3s '+i*30+'ms'
+		}
+	  });
+	  $(document).on("mouseleave",".hot-loupan-img",function(){
+	  	$('.gdshadow-text-info').css('height','0');
+	  })
+});
+function loadPageData(){
+	$.post("/index", {"web_site":"http://wz.fanteren.com"}, 
+		function(data){
+		     if(data.SUCCESS){ 
+		    	 var cs = "";
+		    	 
+					var company = "";
+					var csVos = data.csVos;
+					var fyVos = data.fyVos; //热门二手房
+					var fyhtml ="";
+					var city = data.csVos[0].csMc.replace('市','');
+					$('.loca-name').html(city);//城市
+					$('#ilogo img').attr('src',data.logoSrc); //logo
+					$('#ilogo img').attr('alt',data.companyVo.companyName);
+					for(var i=0;i<fyVos.length;i++){
+					  fyhtml += '<li class="col-3">'+
+								'	<a class="hot-house-img">'+
+								'		<img src="images/01.png" alt="">'+
+								'		<div class="gdshadow">'+fyVos[i].zhuBt+'</div>'+
+								'		<div class="foucs-tab">精装修</div>'+
+								'	</a>'+
+								'	<div class="hot-house-info">'+
+								'		<div class="info"><span>'+fyVos[i].shiSl+'室'+fyVos[i].tingSl+'厅'+fyVos[i].weiSl+'卫</span><span>136㎡</span><span>'+fyVos[i].lpMc+'</span></div>'+
+								'		<div class="hh-price"><span class="hh-sum"><b>'+fyVos[i].chuShouZj+'</b>万元</span><span class="hh-unit"><em>'+fyVos[i].chuShouDj+'</em>元/㎡</span></div>'+
+								'	</div>'+
+								'</li>'
+					}
+					$('#hotesf').html(fyhtml);
+					var lpVos = data.lpVos;//热门小区
+					var lphtml ="";
+					for(var i=0;i<lpVos.length;i++){
+					  lphtml += '<li class="col-4">'+
+								'	<a href="#" class="hot-loupan-img">'+
+								'		<img src="images/loupan01.png" alt="">'+
+								'        <div class="gdshadow"></div>'+
+								'        <div class="gdshadow-text">'+
+								'        	<div class="gd-title">'+lpVos[i].xqMc1+'</div>'+
+								'        	<div class="gdshadow-text-info">'+
+								'        		<p>在售二手房<b>155</b>套</p>'+
+								'        		<p>出租二手房<b>155</b>套</p>'+
+								'        	</div>'+
+								'        </div>'+
+								'	</a>'+
+								'</li>';
+					}
+					$('#hotxq').html(lphtml);
+
+		     }
+		     else{
+		    	 showDialogMes("首页访问失败！message:"+data.Mes);
+		     }
+	    }, "json");
+	
+	return false;
+}
+
+</script>
+
+</body>
+</html>
