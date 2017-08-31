@@ -1,3 +1,8 @@
+var httpUrl="http://59.110.42.225:7001";
+// var httpUrl="http://192.168.1.13:7001";
+var imgUrl="http://59.110.42.225:7002";
+var access_secret="ZmFuZ21haWRvbmc=";
+
 // 首页banner背景图片滚动
 $(window).scroll(function(){
 	var postop = $(window).scrollTop()/21;
@@ -7,7 +12,9 @@ $(window).scroll(function(){
 })
 
 // 首页顶部搜索标签切换
+var typeVal = "ChuShou"
 $('#ser-menu li').on('click',function(){
+	var typeVal=$(this).attr('data-s')
 	$(this).addClass('act').siblings().removeClass('act');
 	arrowL = $(this).prop('offsetLeft')+$(this).width()/2;
 	$('#ser-menu .arrow').css('left',arrowL);
@@ -22,6 +29,8 @@ $('#ser-menu li').on('click',function(){
 $('.old-close-btn').on('click',function(){
    $('.old-browser-popup').hide();
 });
+
+
 
 // 锚链接平滑滚动
 function maolink(){
@@ -57,37 +66,125 @@ function maolink(){
 	        } 
 	})
 }
-
 // 绑定enterkey函数
 function bindKey(obj,eObj){
-  $(".ipttext").keyup(function(e){
+  $(obj).keyup(function(e){
     var eCode = e.keyCode ? e.keyCode : e.which ? e.which : e.charCode;
     if(eCode==13){
      $(eObj).trigger('click')
     }
+    return false;
   });
+
+}
+$('.sort-item').on('click',function(){
+     $(this).addClass('act').siblings().removeClass('act');
+     $('.sort-arrow').removeClass('sortarrowtop')
+     $('.sort-arrow').removeClass('sortarrowbot')
+
+  })
+//获取url里的参数
+function GetQueryString(name) {
+  
+  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+  var r = window.location.search.substr(1).match(reg);
+//  if(r != null) return unescape(r[2]);
+  if(r != null) return r[2];
+  return null;
 }
 
+function  popupcenter(){
+	oLeft = ($(window).width() - $('.popupbox').width())/2;
+	oTop = ($(window).height() - $('.popupbox').height())/2-50;
+	$('.popupbox').css('left',oLeft);
+	$('.popupbox').css('top',oTop);
+	$(document).on('click','#popClose',function(){
+	   $('.popupbox').fadeOut('fast');	
+	   $('.popupbg').fadeOut('fast');	
+	});
+	$('.popupbg').on('click',function(){
+	   $('.popupbox').fadeOut('fast');	
+	   $('.popupbg').fadeOut('fast');	
+	})
+};
+popupcenter()
 
-// 下拉菜单
-// $('.select-box .placeholder').on('click',function(){
-// 	$('.select-box').removeClass('act')
-// 	$(this).parent('.select-box').addClass('act')
-// })
-// // 关闭下拉菜单
-// $('.select-box .drop-down li').on('click',function(){
-// 	$(this).parent().parent('.select-box').removeClass('act');
-// 	$(this).parent().prev('.placeholder').text($(this).text())
+
+// 列表页地区地铁切换
+$('#loca-tab span').on("click",function(){
+  $('.loca-con a').removeClass('act');
+  $('.sub-list').hide()
+
+  $(this).addClass('act').siblings().removeClass('act');
+  $('.loca-filter .loca-con').hide();
+  $('.loca-filter .loca-con').eq($(this).index()).show()
+})
+
+
+//下拉菜单
+$('.select-box .placeholder').on('click',function(){
+	$('.select-box').removeClass('act')
+	$(this).parent('.select-box').addClass('act')
+})
+
+// 关闭下拉菜单
+$(document).on('click','.drop-down .option',function(){
+	$(this).parent().parent('.select-box').removeClass('act');
+	$(this).parent().prev('.placeholder').text($(this).text())
 	
+});
+
+// $('body').on('click',function(){
+//   $('.select-box').removeClass('act');
+// })
+// 阻止事件冒泡
+// $(".select-box,.stoption").on('click',function(event){
+//   event.stopPropagation();
 // });
 
-$('body').on('click',function(){
-  $('.select-box').removeClass('act');
+
+// 列表页同商区地区检索
+var iText = '';
+function sqqysearch(iT){
+	$('.loadgif').show();
+	var iText = iT.text(); 
+	$('#serBtn').val(iText);
+	submitForm("#searchForm",1);//提交form表单搜索  
+}
+
+$('.textipt-box input').on('click',function(){
+  $(this).parent().find('button').show();
+  $(this).parent().prev('.cb-box').find('.inputbtn').prop('checked',false);
 })
-// 阻止事件冒泡
-$(".stoption").on('click',function(event){
-  event.stopPropagation();
-});
+$(document).on('click','.textipt-box button',function(){
+	var inputObj = $(this).parent().find('input');
+
+	inputObj.each(function(){
+		if(detectNum($(this).val())==false){
+			$('.erotips').fadeIn()
+        	$('.popupbg').fadeIn()
+            $('.erotips .tipscon').html('只能输入纯数字');
+		}
+	})
+})
+$('.more-btn').on('click',function(){
+  $(this).addClass('act');
+  $(this).prev().height("auto");
+  $(this).prev().find('.textipt-box').show()
+})
+
+
+// 检测是否为
+function detectNum (str){
+	var n = 0;
+	for(var i = 0; i<str.length; i++){
+      n=str.charCodeAt(i);
+      if(n<48 || n>57) return false   
+	}
+	return true;
+	
+	}
+
 
 // 高度为auto时动画
 function autoH(obj){
@@ -113,7 +210,7 @@ function lSlide(foucs,img,time){
    $('.slide-foucs-wrap').css('width','40px')
    for(var i=0; i<slideLen;i++){
      if (img) {
-     	slideHtml += '<span class="slide-bullet"><img src="'+imgSrc.eq(i).attr('src')+'"></span>';	
+     	slideHtml += '<span class="slide-bullet"><img alt="" src="'+imgSrc.eq(i).attr('src')+'"></span>';	
      }else{
      	slideHtml += '<span class="slide-bullet"></span>';	
      }
@@ -197,4 +294,120 @@ function lSlide(foucs,img,time){
    	    	$('.slide-foucs-wrap').css('transform','translate3d( 0, 0, 0)');
    	    }	
    })
+}
+
+$(document).on('click',' .inputbtn,.textipt-box button, .drop-down .option,.loca-con a, .sort-item',function(){
+   $('#errotips').hide();
+   $('.loadgif').show(); 
+})
+
+//时间通用
+function formatDate(obj) { 
+    var date = new Date();  
+    date.setTime(obj.time);  
+    date.setHours(obj.hours);  
+    date.setMinutes(obj.minutes);  
+    date.setSeconds(obj.seconds);  
+    return date.format("yyyy-MM-dd hh:mm:ss"); 
+} 
+//通用日期获取
+function formatDateRq(obj) { 
+	var date = new Date();  
+	date.setTime(obj.time);  
+	date.setHours(obj.hours);  
+	date.setMinutes(obj.minutes);  
+	date.setSeconds(obj.seconds);  
+	return date.format("yyyy年MM月dd日"); 
+} 
+Date.prototype.format = function(format) {  
+   /*  
+  [javascript] view plain copy
+  　*　时间格式  
+    * format="yyyy-MM-dd hh:mm:ss";　  
+    */  
+   var o = {  
+    "M+" : this.getMonth() + 1,  
+    "d+" : this.getDate(),  
+    "h+" : this.getHours(),  
+    "m+" : this.getMinutes(),  
+    "s+" : this.getSeconds(),  
+    "q+" : Math.floor((this.getMonth() + 3) / 3),  
+    "S" : this.getMilliseconds()  
+   }  
+   if (/(y+)/.test(format)) {  
+    format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4  
+        - RegExp.$1.length));  
+   }  
+   for (var k in o) {  
+    if (new RegExp("(" + k + ")").test(format)) {  
+     format = format.replace(RegExp.$1, RegExp.$1.length == 1  
+         ? o[k]  
+         : ("00" + o[k]).substr(("" + o[k]).length));  
+    }  
+   }  
+   return format;  
+  } 
+//通用分页
+function pageHtml(countSum,pageSize,currentPage,method){
+	   $(window).scrollTop(0) 
+	   var html='';
+	           var idTagPrev="";
+	           var idTagNext="";
+	           if(currentPage==1){
+	        	   idTagPrev="no-prev"
+	           }
+	           var num=Math.ceil(countSum/pageSize)
+	           if(num==currentPage){
+	        	   idTagNext="no-next";  
+	           }
+	           var onclick=idTagPrev==""?"javascript:"+method+"("+(currentPage-1)+");":"#";
+		       html+='<a href="'+onclick+'" class="'+idTagPrev+'">上一页</a>';
+		       var startPageNo = (currentPage-1);
+		       var act="";
+		       if(startPageNo==0){
+		    	   for(var i=currentPage;i<=num;i++){
+		    		  if(i==5&&(i+2)<=num){
+		    		html+='<span>...</span>'
+		    		act=(num-2)==currentPage?"class='act'":"";
+		            html+='<a href="javascript:'+method+'('+(num-1)+');" '+act+'>'+(num-1)+'</a>';
+		    		act=(num-1)==currentPage?"class='act'":"";
+		            html+='<a href="javascript:'+method+'('+(num)+');" '+act+'>'+(num)+'</a>';
+		            break;
+		    		   }else{
+		    		act=i==currentPage?"class='act'":"";
+		            html+='<a href="javascript:'+method+'('+i+');" '+act+'>'+i+'</a>';
+		    		   }
+		    	   }  
+		       }else{
+		    	   if((num-currentPage)<4&&(num-currentPage)>=0){
+		    		   for(var i=(num-5);i<=num;i++){
+		    			   if(i>0){
+		    				   act=i==currentPage?"class='act'":"";
+		    				   html+='<a href="javascript:'+method+'('+i+');" '+act+'>'+i+'</a>'  ; 
+		    			   }
+		    		   }
+		    	   }else{
+		    		   act=i==(currentPage-1)?"class='act'":"";
+		           html+='<a href="javascript:'+method+'('+(currentPage-1)+');" '+act+'>'+(currentPage-1)+'</a>'
+		    	   for(var i=currentPage;i<=num;i++){
+			    		  if(i==(currentPage+3)&&(i+2)<=num){
+			    		html+='<span>...</span>';
+		    		    act=(num-2)==currentPage?"class='act'":"";
+			            html+='<a href="javascript:'+method+'('+(num-1)+');" '+act+'>'+(num-1)+'</a>';
+		    		    act=(num-1)==currentPage?"class='act'":"";
+			            html+='<a href="javascript:'+method+'('+(num)+');" '+act+'>'+(num)+'</a>';
+			            break;
+			    		   }else{
+		    		    act=i==currentPage?"class='act'":"";
+			            html+='<a href="javascript:'+method+'('+i+');" '+act+'>'+i+'</a>';
+			    		   }
+			    	   }  
+		    	   }
+		       }
+		       onclick=idTagNext==""?"javascript:"+method+"("+(currentPage+1)+")":"#";
+		       html+='<a href="'+onclick+'" class="'+idTagNext+'">下一页</a>';
+		       return html;
+	  }
+function moreInfo(lx){
+	window.location="new-list.html?lx="+lx+"&cs="+cityId;
 }

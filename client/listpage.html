@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>房源列表页</title>
+<meta name="keywords" content="#" />
+<meta name="description" content="#" />
+<meta charset="utf-8" />
+<!-- 强制使用高版本浏览器渲染 -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<!-- 强制使用webkit -->
+<meta name="renderer" content="webkit">
+<!-- 禁止百度移动端转码 -->
+<meta http-equiv="Cache-Control" content="no-transform " />
+<!-- 清除缓存刷新 -->
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<link rel="stylesheet" type="text/css" href="./assets/fonts/iconfont.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/timepicker.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/base.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+</head>
+<body>
+<div id="esflist">
+  <div class="top-menu">
+    <div class="l-row">
+      <div class="top-nav fl">
+        <a href="index.html">首页</a>
+        <a id="esfTopNav" href="listpage.html?cs=110100&type=ChuZu">二手房</a>
+        <a id="zfTopNav" href="listpage.html?cs=110100&type=ChuZu">租房</a>
+        <a href="deals.html" hidden>商业买卖</a>
+        <a href="zumao.html" hidden>商业租贸</a>
+        <a href="shangquan.html" hidden>商圈</a>
+        <a href="jingjiren.html" hidden>经纪人</a>
+      </div>
+      <div class="fr">
+        <i class="iconfont icon-dianhua"></i><em class="telphone">热线电话：4009998899</em>
+      </div>
+    </div>
+  </div>
+  <div class="serach-main">
+  	<div class="l-row">
+  		<div class="serach-sel fl">
+  			<a href="/" class="logo fl"><img id="listLogo" src="" alt=""></a>
+  			<h5 class="name" id="fyType"></h5>
+  		</div>
+      <form id="searchForm" method="post" onsubmit="return false;">
+        <div class="hideinput hidden">
+          <input type="hidden" class="n_cs" value="" name="cs_id">
+          <input type="hidden" class="n_type" value="" name="typeTab">
+        </div>
+    		<div class="serach-box fr marnone">
+      			<input type="text" class="ipttext" id="serBtn" name="serach_qysqlp" placeholder="请输入区域、商圈或者楼盘名开始找房">
+      			<button id="keybtn" class="fbtn"><i class="iconfont icon-sousuo"></i></button>
+    		</div>
+      </form>
+  	</div>
+  </div>
+
+  <div class="container">
+   <div class="l-row">
+  <form id="form" method="post">
+  	<div class="filter-main">
+      <div class="fb-lst">
+        <span class="title fl">位置</span>
+        <div class="fl-sel" id="loca-tab">
+            <span class="act">区域<i class="iconfont icon-down"></i></span>
+            <span>地铁<i class="iconfont icon-down"></i></span>
+        </div>
+        <div class="loca-filter">
+          <div class="loca-con">
+              <div class="option-list clear">
+                <div id="xzqList"><a href="javascript:;">区域加载中...</a></div>
+                <div id="shangquanlist" class="sub-list">
+                 <a javascript:;>加载</a>
+                </div>
+              </div>
+          </div>
+          <div class="loca-con" style="display: none;">
+              <div class="option-list clear">
+                <div id="subwayList"><a href="#" >加载中...</a></div>
+                <div id="metroList" class="sub-list">
+                  
+                </div>
+              </div>
+              
+          </div>
+        </div>
+      </div>  
+      <div class="fb-lst">
+        <span class="title fl" id="priceType">售价</span>
+        <div class="option-list bornone">
+           <div class="checkbox-list" >
+              <div class="cb-box" id="priceFilter">
+                   <!-- <div class="checkbox">
+                      <input type="checkbox" name="chu_shou_zj">
+                      <i class="ico-check"></i>
+                      <label>载入中...</label>
+                   </div> -->
+              </div>
+              <div class="textipt-box">
+                   <input type="text" name="chu_shou_zj_from">-<input type="text" name="chu_shou_zj_to">m²
+                   <button type="button">确定</button>
+               </div>
+           </div>
+           <span class="more-btn fr">+更多</span>
+        </div>
+      </div>
+      <div class="fb-lst">
+        <span class="title fl">面积</span>
+        <div class="option-list bornone">
+           <div class="checkbox-list">
+               <div class="cb-box" id="mianjiFilter">
+                   <div class="checkbox">
+                      <input type="checkbox">
+                      <i class="ico-check"></i>
+                      <label>载入中...</label>
+                   </div>
+               </div>
+               <div class="textipt-box">
+                   <input type="text" name="xs_mj_from">-<input type="text" name="xs_mj_to">m²
+                   <button type="button">确定</button>
+               </div>
+                   
+           </div>
+           <span class="more-btn fr">+更多及自定义</span>
+        </div>
+      </div>
+      <div class="fb-lst">
+        <span class="title fl">房型</span>
+        <div class="option-list bornone">
+           <div class="checkbox-list">
+               <div class="cb-box" id="fxFilter">
+                   <div class="checkbox">
+                      <input type="checkbox" class="inputbtn val" value="1">
+                      <i class="ico-check"></i>
+                      <label>一室</label>
+                   </div>
+                   <div class="checkbox">
+                      <input type="checkbox" class="inputbtn" value="2">
+                      <i class="ico-check"></i>
+                      <label>二室</label>
+                   </div>
+                   <div class="checkbox">
+                      <input type="checkbox" class="inputbtn" value="3">
+                      <i class="ico-check"></i>
+                      <label>三室</label>
+                   </div>
+                   <div class="checkbox">
+                      <input type="checkbox" class="inputbtn" value="4">
+                      <i class="ico-check"></i>
+                      <label>四室</label>
+                   </div>
+                   <div class="checkbox">
+                      <input type="checkbox" class="inputbtn"  value="5">
+                      <i class="ico-check"></i>
+                      <label>五室及以上</label>
+                   </div>
+                </div>
+                <div class="textipt-box">
+                   <input type="text" name="shi">室<input type="text" name="ting">厅<input type="text" name="wei">卫
+                   <button type="button">确定</button>
+                </div>
+            </div>
+           <span class="more-btn fr">+更多及自定义</span>
+        </div>
+      </div>
+      <div class="fb-lst bb-list-qt">
+        <span class="title fl">其他</span>
+        <div class="option-list bornone ">
+           <div class="checkbox-list visible col-1">
+               <div class="select-box">
+                   <div class="placeholder">朝向</div> 
+                   <ul class="drop-down" id="cxList">
+                   </ul>
+               </div>
+               <div class="select-box">
+                   <div class="placeholder">装修</div> 
+                   <ul class="drop-down" id="zxList">
+                   </ul>
+               </div>
+               <div class="select-box">
+                   <div class="placeholder">楼层</div> 
+                   <ul class="drop-down" id="lcList">
+                   </ul>
+               </div>
+               <div class="select-box typechuzu">
+                   <div class="placeholder">方式</div> 
+                   <ul class="drop-down" id="wtList">
+                   </ul>
+               </div>
+               <div class="select-box typechushou">
+                   <div class="placeholder">类型</div> 
+                   <ul class="drop-down" id="leixingList">
+                   </ul>
+               </div>
+               <div class="select-box typechushou">
+                   <div class="placeholder">房龄</div> 
+                   <ul class="drop-down" id="fanglingsList">
+                   </ul>
+               </div>
+               <div class="select-box typechushou">
+                   <div class="placeholder">用途</div> 
+                   <ul class="drop-down" id="yongtuList">
+                   </ul>
+               </div>
+               <div class="select-box typechushou">
+                   <div class="placeholder">权属</div> 
+                   <ul class="drop-down" id="quanshuList">
+                   </ul>
+               </div>
+             </div>
+        </div>
+      </div>
+    </div>
+    <div class="hideinput" hidden>
+        <input type="text" class="n_cs" value="" name="cs_id">   <!-- 城市ID -->
+        <input type="text" class="n_type" value="" name="typeTab">   <!-- 行政区 -->
+
+        <input type="text" class="n_shoujia" name="chu_shou_zj">   <!-- 行政区 -->
+        <input type="text" class="n_mianji" name="xs_mj">   <!-- 行政区 -->
+        <input type="text" class="n_shi" name="shi_sl">   <!-- 行政区 -->
+
+        <input type="text" class="n_xzq" name="xzq_id">   <!-- 行政区 -->
+        <input type="text" class="n_sq" name="sq_id">   <!-- 商圈 -->
+        <input type="text" class="dt_lx" name="dt_xl">   <!-- 地铁 -->
+
+        <input type="text" class="n_cx" name="fj_chao_xiang">   <!-- 房间朝向 -->
+        <input type="text" class="n_zx" name="zhuang_xiu">   <!-- 装修 -->
+        <input type="text" class="n_lc" name="lc_lx">   <!-- 楼层 -->
+        <input type="text" class="n_wt" name="wt_fs">   <!-- 委托方式 -->
+
+        <input type="text" class="n_leixing" name="jz_lx">   <!-- 建筑类型 -->
+        <input type="text" class="n_fangling" name="fang_chan_cy_nx">   <!-- 房产年限 -->
+        <input type="text" class="n_yongtu" name="fang_wu_lx">   <!-- 房屋用途 -->
+        <input type="text" class="n_quanshu" name="fw_quan_shu">   <!-- 房屋权属 -->
+
+        
+        
+
+        <input type="text" class="n_sort" name="sort">   <!-- 排序 -->
+        <input type="text" class="n_search" name="serach_qysqlp">   <!-- 搜索 -->
+        <input type="text" class="currentPage" name="currentPage">   <!-- 分页 -->
+    </div>
+    </form>
+  	<div class="order-main">
+    	  <div class="house-sum fl">共有<span class="text-main-color" id="fySum">000</span>套房源</div>
+    	  <div class="sort-box fr">
+          <span class="sort-item act" id="sortDefault">默认排序</span>
+          <span class="sort-item" id="sortNew">最新发布<i class="sort-arrow sort-arrow-top"></i></span>
+          <span class="sort-item" id="sortPrice">价格排序<i class="sort-arrow"></i></span>
+          <span class="sort-item" id="sortHot">最近热门<i class="sort-arrow"></i></span>
+        </div>
+      </div>
+
+      <div class="content-list ershoufang" >
+        <div class="erotip" id="errotips">
+           <i class="iconfont icon-zanwu"></i>
+           此条件下暂无房源，点击别的条件试试(●'◡'●)
+        </div>
+        <div class="loadgif">
+            <i class="iconload"></i>
+            房源正在加载中...
+          </div>
+      	<ul id="listCon">
+          <!-- <li>
+            <a href="#" class="fl conlist-img"><img src="" alt=""></a>
+            <div class="con-list-info">
+              <a href="#" class="title">载入中...</a>
+              <div class="price">
+                <span class="total"><b>000</b>万</span>
+                <span class="unit">0000元/㎡</span>
+              </div>
+              <div class="info-li">
+                <i class="iconfont icon-zhuzhai"></i>
+                <div class="zhuzhai-info">
+                  <span>0室0厅0卫</span>
+                  <span>0㎡</span>
+                  <span>朝向</span>
+                  <span>精装</span>
+                  <span>区间/总层</span>
+                </div>
+              </div>
+              <div class="info-li">
+                  <i class="iconfont icon-dingwei"></i>
+                <div class="zhuzhai-info">
+                  <a href="#" class="al">弘善家园</a>
+                  <span>136㎡</span>
+                  <span class="sl"><a href="" href="#">昌平</a>-<a href="" href="#">回龙观</a>-龙禧二街88号</span>
+                </div>
+            </div>
+              <div class="info-li"><i class="iconfont icon-popularity"></i>共<span>0</span>次带看/<span>1</span>小时前发布</div>
+              <div class="info-li">同小区<span>35</span>个房源在售</div>
+              <div class="tag-box">
+                <span>满五唯一</span><span>随时看房</span><span>地铁8号线</span>
+              </div>
+            </div>
+          </li> -->
+        </ul>
+      </div>
+      <div class="crumbs">
+        <div class="l-row">
+      	<div class="fl nav"><a href="index.html">首页</a>&gt;<a href="#" id="crumbsnav" >商业买卖</a></div>
+      	<div class="page fr" id="fotter-page">
+      		<a href="#">上一页</a>
+      		<a href="#">1</a>
+      		<a href="#">2</a>
+      		<a href="#" class="act">3</a>
+      		<span>...</span>
+      		<a href="#">4</a>
+      		<a href="#">100</a>
+      		<a href="#">下一页</a>
+      	</div>
+         </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hot-house tuijian" hidden>
+  	<div class="l-row">
+  	   <h3 class="title">推荐房源</h3>
+  	  <ul class="hot-house-box">
+          <li class="col-4">
+          	<a class="hot-house-img">
+          		<img src="" alt="">
+          		<div class="title-info act"></div>
+          		<span class="name">朝外soho</span>
+          	</a>
+          	<div class="hot-house-info">
+          		<div class="info"><span>3室内2厅</span><span>136㎡</span></div>
+          		<div class="hh-price"><span class="hh-sum"><b>650</b>万元</span><span class="hh-unit fr"><em>61256</em>元/㎡</span></div>
+          		<div class="foucs-tab">精装修</div>
+          	</div>
+          </li>
+          <li class="col-4">
+          	<a class="hot-house-img">
+          		<img src="" alt="">
+          		<div class="title-info act"></div>
+          		<span class="name">朝外soho</span>
+          	</a>
+          	<div class="hot-house-info">
+          		<div class="info"><span>3室内2厅</span><span>136㎡</span></div>
+          		<div class="hh-price"><span class="hh-sum"><b>650</b>万元</span><span class="hh-unit fr"><em>61256</em>元/㎡</span></div>
+          		<div class="foucs-tab">精装修</div>
+          	</div>
+          </li>
+          <li class="col-4">
+          	<a class="hot-house-img">
+          		<img src="" alt="">
+          		<div class="title-info act"></div>
+          		<span class="name">朝外soho</span>
+          	</a>
+          	<div class="hot-house-info">
+          		<div class="info"><span>3室内2厅</span><span>136㎡</span></div>
+          		<div class="hh-price"><span class="hh-sum"><b>650</b>万元</span><span class="hh-unit fr"><em>61256</em>元/㎡</span></div>
+          		<div class="foucs-tab">精装修</div>
+          	</div>
+          </li>
+          <li class="col-4">
+          	<a class="hot-house-img">
+          		<img src="" alt="">
+          		<div class="title-info act"></div>
+          		<span class="name">朝外soho</span>
+          	</a>
+          	<div class="hot-house-info">
+          		<div class="info"><span>3室内2厅</span><span>136㎡</span></div>
+          		<div class="hh-price"><span class="hh-sum"><b>650</b>万元</span><span class="hh-unit fr"><em>61256</em>元/㎡</span></div>
+          		<div class="foucs-tab">精装修</div>
+          	</div>
+          </li>
+         </ul>
+  	</div>
+  </div>
+
+<!-- <div class="popupbg"></div>
+<div class="popupbox">
+
+</div> -->
+
+<div class="footer">
+    <div class="footer-nav">
+    <div class="l-row">
+      <ul class="">
+        <li><a href="javascript:moreInfo('0');void(0);">了解我们</a></li>
+        <li><a href="javascript:moreInfo('1');void(0);">关于我们</a></li>
+        <li><a href="javascript:moreInfo('2');void(0);">联系我们</a></li>
+        <li><a href="javascript:moreInfo('4');void(0);">隐私声明</a></li>
+      </ul>
+      
+     </div>
+    </div>
+    <div class="l-row">
+      <!-- <div class="footer-user">
+            自定义内容
+      </div> -->
+      <div class="" style="color: #fff; text-align: center; margin-top:20px;">
+         <div class="contact-fl">
+          <p class="telphone">官方客服：400-666-9988</p>
+          <p>周一至周六</p>
+          <p>（早9：00-晚18：00）</p>
+         </div>
+         <div class="contact-fr" style="margin-top: 20px;">
+          <img src="assets/images/ewm.png" alt="">
+         </div>
+      </div>
+    </div>
+    <div class="copyright" id="copyright">...</div>
+  </div>
+</div>
+
+<div class="popupbox erotips">
+      <div class="title"><h2>Error</h2> <i class="iconfont close icon-close" id="popClose"></i></div>
+      <div class="tipscon"></div>
+</div>
+<div class="popupbg"></div>
+<script type="text/javascript" src="./assets/js/jquery-min.js"></script>
+<script type="text/javascript" src="./assets/js/jquery.form.min.js"></script>
+<script type="text/javascript" src="./assets/js/common.js"></script>
+
+
+
+<script type="text/javascript">
+var cityId = GetQueryString('cs')
+var formType = GetQueryString('type');
+var search = decodeURI(GetQueryString('serach_qysqlp')==null?"":GetQueryString('serach_qysqlp'));
+
+if(search!=''){
+  document.title="搜索结果:"+search+"";
+  $('.hideinput .n_search').val(search);
+}
+$('.ipttext').val(search);
+
+$('#zfTopNav').attr('href','listpage.html?cs='+cityId+'&type=ChuZu');
+$('#esfTopNav').attr('href','listpage.html?cs='+cityId+'&type=ChuShou');
+
+if(formType ==="ChuShou"){
+   $('#fyType').text('二手房');
+   document.title="二手房出售";
+   $('#priceType').text('售价');
+   $('.ipttext').attr('placeholder')
+   $('#esfTopNav').addClass('act');
+
+   $('.typechuzu').hide();
+
+   $('#crumbsnav').text("二手房");
+   $('#crumbsnav').attr('href','listpage.html?cs='+cityId+'&type=ChuShou')
+   $('.hideinput .n_cs').val(cityId);
+   $('.hideinput .n_type').val(formType);
+}else if(formType ==="ChuZu"){
+   document.title="出租房出租";
+   $('#fyType').text('租房');
+   $('#priceType').text('租金');
+   $('#zfTopNav').addClass('act');
+
+   $('.typechushou').hide();
+
+   $('#crumbsnav').text("租房");
+   $('#crumbsnav').attr('href','listpage.html?cs='+cityId+'&type=ChuZu');
+   $('.hideinput .n_cs').val(cityId);
+   $('.hideinput .n_type').val(formType);
+}else if(formType ==="SyMaiMai"){
+   $('#fyType').text('商业买卖')
+}else if(formType ==="ZuLin"){
+   $('#fyType').text('租赁')
+}
+
+
+  var listhtml="";
+  var xzqHtml="";
+  var subwayHtml=""
+
+  
+  var onOff=false;
+$(document).ready(function(){
+  ajaxLoadPage(search); //加载页面内容
+   $('.ipttext').focus();
+    bindKey('.ipttext','#keybtn');
+    $('#keybtn').on('click',function(){
+   submitForm("#searchForm",1);//提交form表单搜索
+   var serval = $('.ipttext').val()
+   $('.hideinput .n_search').val(serval); //搜索key值
+   document.title="搜索结果:"+serval; //改变页面title
+
+   
+   
+   $('.inputbtn').prop('checked',false); //取消筛选区域所有input选项
+   $('.loca-con a').removeClass('act')
+   $('#errotips').hide();
+   $('.loadgif').show();//显示加载动画
+  })
+  //点击行政区获取
+  $(document).on('click','#xzqList a',function(){
+    var subhtml="";
+    $(this).addClass('act').siblings().removeClass('act');
+    thisId = $(this).attr('data-id');
+    $('.hideinput .n_sq').val('');
+    $('.hideinput .dt_lx').val('');
+    $('.hideinput .n_xzq').val(thisId);
+    submitForm("#form",1);//提交form表单行政区查询
+    
+    $('#shangquanlist').show();
+    $.post(httpUrl+"/webSite/getSqVos", 
+      {
+        "cs_id":cityId,
+        "typeTab":formType,
+        "xzq_id":thisId,
+      }, 
+      function(data){
+        var sqList = data.sqVos;
+        if(data.SUCCESS){
+            for(var i=0; i<sqList.length;i++){
+              subhtml +='<a data-sq="'+sqList[i].id+'">'+sqList[i].sqMc+'</a>'
+            }
+            $('#shangquanlist').html(subhtml)
+         }else{
+          alert("请求数据失败")
+         }    
+      }, "json")
+    return false
+  });
+
+  //地铁站获取
+  $(document).on('click','#subwayList a',function(){
+    var submetrohtml="";
+    $(this).addClass('act').siblings().removeClass('act');
+    thisId = $(this).attr('data-id');
+
+    $('.hideinput .n_sq').val('');
+    $('.hideinput .n_xzq').val('');
+    $('.hideinput .dt_lx').val(thisId);
+    submitForm("#form",1);//提交form表单行政区查询
+    $('#metroList').show();
+    $('.shangquanlist').hide;
+    $.post(httpUrl+"/webSite/getDtZhVos", 
+      {
+        "cs_id":cityId,
+        "typeTab":formType,
+        "xzq_id":thisId,
+      }, 
+      function(data){
+        var metroList = data.DtZhVos;
+        if(data.SUCCESS){
+            for(var i=0; i<metroList.length;i++){
+              submetrohtml +='<a data-sq="'+metroList[i].id+'">'+metroList[i].sqMc+'</a>'
+            }
+            $('#metroList').html(submetrohtml)
+         }else{
+          alert("请求数据失败")
+         }    
+      }, "json")
+    return false
+  });
+  
+  // 商圈查询
+  $(document).on('click','#shangquanlist a',function(){
+       var sqid = $(this).attr('data-sq')
+       if($(this).hasClass('act')){
+          $(this).removeClass('act')
+          $('.hideinput .n_sq').val('');
+          submitForm("#form",1);//提交form表单商圈查询取消
+       }else{
+          $(this).addClass('act').siblings().removeClass('act')
+          $('.hideinput .n_sq').val(sqid);
+          submitForm("#form",1);//提交form表单商圈查询取消
+       }
+  })
+
+  $(document).on('click','.lpbtn',function(){
+    
+    sqqysearch($(this))
+  })
+
+  $(document).on('click','.xzqbtn',function(){
+     sqqysearch($(this))
+  })
+  $(document).on('click','.sqbtn',function(){
+    sqqysearch($(this))
+  })
+  // 地铁站查询
+  $(document).on('click','#metroList a',function(){
+       var sqid = $(this).attr('data-sq')
+       if($(this).hasClass('act')){
+          $(this).removeClass('act')
+          $('.hideinput .n_sq').val('');
+          submitForm("#form",1);//提交form表单商圈查询取消
+       }else{
+          $(this).addClass('act').siblings().removeClass('act')
+          $('.hideinput .n_sq').val(sqid);
+          submitForm("#form",1);//提交form表单商圈查询取消
+       }
+  })
+  // 自定义查询
+  $(document).on('click','.textipt-box button',function(){
+    submitForm("#form",1);//提交form表单商圈查询取消
+  })
+  //售价查询
+  var sjValue=[];
+  $(document).on('click','#priceFilter .inputbtn', function(){
+    sjValue = [];
+    var inputArr = $(this).parent().parent('.cb-box').find('.inputbtn')
+    inputArr.each(function(){
+      if($(this).prop('checked') == true){
+        sjValue.push($(this).val());$(this).parent().parent('.cb-box').next('.textipt-box').hide()
+        }else{
+         $(this).parent().parent('.cb-box').next('.textipt-box').show()
+        }
+    })
+     
+     $('.hideinput .n_shoujia').val(sjValue);
+     if(formType ==="ChuShou"){
+      $('.hideinput .n_shoujia').attr('name','chu_shou_zj');
+     }else if(formType ==="ChuZu"){
+        $('.hideinput .n_shoujia').attr('name','cz_jg');
+     }
+     submitForm("#form",1);
+  })
+  //面积查询
+  var mjValue=[];
+  $(document).on('click','#mianjiFilter .inputbtn', function(){
+    mjValue = [];
+    var inputArr = $(this).parent().parent('.cb-box').find('.inputbtn')
+    inputArr.each(function(){
+      if($(this).prop('checked') == true){
+        mjValue.push($(this).val());
+        $(this).parent().parent('.cb-box').next('.textipt-box').hide()
+      }else{
+       $(this).parent().parent('.cb-box').next('.textipt-box').show()
+      }
+    });
+     $('.hideinput .n_mianji').val(mjValue);
+     submitForm("#form",1);
+  })
+  //房型查询
+  var shiValue=[];
+  $(document).on('click','#fxFilter .inputbtn', function(){
+     shiValue = [];
+      var inputArr = $(this).parent().parent('.cb-box').find('.inputbtn')
+      inputArr.each(function(){
+        if($(this).prop('checked') == true){
+          shiValue.push($(this).val());
+          $(this).parent().parent('.cb-box').next('.textipt-box').hide()
+        }else{
+         $(this).parent().parent('.cb-box').next('.textipt-box').show()
+        }
+      });
+     $('.hideinput .n_shi').val(shiValue);
+     submitForm("#form",1);
+  })
+
+  // $(document).on('click','.checkbox .inputbtn', function(){
+  //    submitForm("#form",1);
+  // })
+
+
+
+  // 朝向查询
+  $(document).on('click','#cxList .option',function(){
+    var cxid = $(this).attr('data-id')
+    $('.hideinput .n_cx').val(cxid);
+     submitForm("#form",1);
+  });
+  
+  // 装修查询
+  $(document).on('click','#zxList .option',function(){
+    var zxid = $(this).attr('data-id')
+    $('.hideinput .n_zx').val(zxid);
+    submitForm("#form",1);
+  });
+  //楼层查询
+  $(document).on('click','#lcList .option',function(){
+    var lcid = $(this).attr('data-id')
+    $('.hideinput .n_lc').val(lcid);
+    submitForm("#form",1);
+  });
+  //委托方式查询
+  $(document).on('click','#wtList .option',function(){
+    var wtid = $(this).attr('data-id')
+    $('.hideinput .n_wt').val(wtid);
+    submitForm("#form",1)
+  });
+  //建筑类型查询
+  $(document).on('click','#leixingList .option',function(){
+    var jzlxid = $(this).attr('data-id')
+    $('.hideinput .n_leixing').val(jzlxid);
+    submitForm("#form",1)
+  });
+  //房龄查询
+  $(document).on('click','#fanglingsList .option',function(){
+    var fanglingid = $(this).attr('data-id')
+    $('.hideinput .n_fangling').val(fanglingid);
+    submitForm("#form",1)
+  });
+  //用途查询
+  $(document).on('click','#yongtuList .option',function(){
+    var yongtuid = $(this).attr('data-id')
+    $('.hideinput .n_yongtu').val(yongtuid);
+    submitForm("#form",1)
+  });
+  //权属查询
+  $(document).on('click','#quanshuList .option',function(){
+    var qusnshuid = $(this).attr('data-id')
+    $('.hideinput .n_quanshu').val(qusnshuid);
+    submitForm("#form",1)
+  });
+
+  //类型查询
+  $(document).on('click','#wtList .option',function(){
+    var wtid = $(this).attr('data-id')
+    $('.hideinput .n_wt').val(wtid);
+    submitForm("#form",1)
+  });
+  //房龄查询
+  $(document).on('click','#wtList .option',function(){
+    var wtid = $(this).attr('data-id')
+    $('.hideinput .n_wt').val(wtid);
+    submitForm("#form",1)
+  });
+  //用途查询
+  $(document).on('click','#wtList .option',function(){
+    var wtid = $(this).attr('data-id')
+    $('.hideinput .n_wt').val(wtid);
+    submitForm("#form",1)
+  });
+  //权属查询
+  $(document).on('click','#wtList .option',function(){
+    var wtid = $(this).attr('data-id')
+    $('.hideinput .n_wt').val(wtid);
+    submitForm("#form",1)
+  });
+
+
+  // 房源默认排序
+  $(document).on('click','#sortDefault',function(){
+    $('.hideinput .n_sort').val('')
+    submitForm("#form",1);//提交form表单默认排序
+  })
+  // 房源最新排序
+  $(document).on('click','#sortNew',function(){
+    $('.hideinput .n_sort').val('fafan_sj asc')
+    submitForm("#form",1);//提交form表单最新排序
+  })
+  // 房源价格升序
+  $(document).on('click','#sortPrice',function(){
+    onOff=true;
+    if(onOff){
+      $(this).children('i').removeClass('sortarrowbot');
+      $(this).children('i').addClass('sortarrowtop');
+      $('.hideinput .n_sort').val('chu_shou_zj asc')
+      submitForm("#form",1);//提交form表单价格升序
+      onOff=false;
+    }else{
+      $(this).children('i').removeClass('sortarrowtop');
+      $(this).children('i').addClass('sortarrowbot');
+      $('.hideinput .n_sort').val('chu_shou_zj desc');
+      submitForm("#form",1);//提交form表单价格降序
+      onOff=true;
+      }   
+  })
+  // 房源最热排序
+  $(document).on('click','#sortHot',function(){
+    $('.hideinput .n_sort').val('dai_kan_cs asc')
+    submitForm("#form",1);//提交form表单最热排序
+  })
+});
+
+// 分页
+function pageInfo(currentPage){
+	submitForm("#form",currentPage);	
+}
+
+function submitForm(formObj,currentPage){
+	$(".currentPage").val(currentPage);
+     $(formObj).ajaxSubmit({
+       type: 'post', // 提交方式 get/post
+       url: httpUrl+"/webSite/listFy", // 需要提交的 url
+       dataType : 'json',
+       success: function(data) { // data 保存提交后返回的数据，一般为 json 数据
+        var listCon = data.fyVos;
+        var companyId =data.companyId;
+    	//获取图片
+		var ids=[];
+		for(var i=0;i<listCon.length;i++){
+			ids.push(listCon[i].shiKanId);
+		}
+		var json={};
+		json["ids"]=ids;
+		json["access_secret"]=access_secret;
+		if(data.shuiYinZt=="1"){
+		json["watermark"]=data.shuiYinWz;
+		}
+		json["company_id"]=companyId;
+	    $.ajax({  
+	         url: imgUrl+"/getHousePictures" ,  
+	         type:"POST",
+			 dataType:"json",
+	         async: false, 
+	         data:JSON.stringify(json),  
+	         success: function (data) {  
+	             if(data.err_msg=="success"){
+	            	 var imgs=data.data;
+	            	 for(var i=0;i<listCon.length;i++){
+	            		 A:for(var k=0;k<imgs.length;k++){
+							if(listCon[i].shiKanId==imgs[k].id){
+								listCon[i]["imgSk"]=imgs[k].path;
+								break A;
+							}
+	            			 
+	            		 }
+						}
+	             }
+	         }
+	    }); 
+        listhtml ="";
+        $('#fySum').html(data.countSum); //房源总数
+
+        if(data.countSum>0){
+          $('#errotips').hide()
+        }else{
+          $('#errotips').show()
+        };
+        for(var i=0; i<listCon.length;i++){
+        	var imgSk=listCon[i].imgSk;
+			if(imgSk==undefined||imgSk==""){
+				imgSk=data.moRenPic;
+			}
+             listhtml += '<li>'+
+                      '  <a href="detail.html?id='+listCon[i].id+'" target="blank" class="fl conlist-img"><img src="'+imgSk+'" alt=""></a>'+
+                      '  <div class="con-list-info">'+
+                      '    <a href="detail.html?id='+listCon[i].id+'" target="blank" class="title">'+listCon[i].zhuBt+'</a>';
+              if(formType ==="ChuShou"){
+                  listhtml+='<div class="price">'+
+                            '      <span class="total"><b>'+listCon[i].chuShouZj+'</b>万</span>'+
+                            '      <span class="unit">'+listCon[i].chuShouDj+'元/㎡</span>'+
+                            '    </div>';
+                          }else if(formType ==="ChuZu"){
+                            listhtml+='<div class="price">'+
+                            '      <span class="total"><b>'+listCon[i].czJg+'</b><em>元/月</em></span>'+
+                            '    </div>';
+                          }
+
+                   listhtml+='    <div class="info-li">'+
+                      '      <i class="iconfont icon-zhuzhai"></i>'+
+                      '      <div class="zhuzhai-info">'+
+                      '        <span>'+listCon[i].shiSl+'室'+listCon[i].tingSl+'厅'+listCon[i].weiSl+'卫</span>'+
+                      '        <span>'+listCon[i].xsMj+'㎡</span>'+
+                      '        <span>'+listCon[i].fjChaoXiang+'</span>'+
+                      '        <span>'+listCon[i].zhuangXiu+'</span>'+
+                      '        <span>'+listCon[i].lcLx+'/'+listCon[i].upstairCount+'</span>'+
+                      '      </div>'+
+                      '    </div>'+
+                      '    <div class="info-li">'+
+                      '        <i class="iconfont icon-dingwei"></i>'+
+                      '      <div class="zhuzhai-info">'+
+                      '        <a class="al lpbtn">'+listCon[i].lpMc+'</a>'+
+                      '        <span class="sl"><a class="xzqbtn">'+listCon[i].xzqMc+'</a>-<a class="sqbtn">'+listCon[i].sqMc+'</a>-'+listCon[i].address+'</span>'+
+                      '      </div>'+
+                      '  </div>'+
+                      '    <div class="info-li"><i class="iconfont icon-popularity"></i>共<span>'+listCon[i].daiKanCs+'</span>次带看/<span>'+listCon[i].diffTime+'</span></div>'+
+                      '    <div class="info-li">同小区<span>'+listCon[i].countSameLp+'</span>个房源在售</div>'+
+                      '    <div class="tag-box">';
+                      var biaoqianArr = listCon[i].fjBiaoQian.split(',')
+                      var biaoQHtml = '';
+
+                      for(var j=0; j<biaoqianArr.length; j++){
+                         biaoQHtml+='<span>'+biaoqianArr[j]+'</span>'
+                      }
+                     
+                      listhtml+= biaoQHtml+
+                      '    </div>'+
+                      '  </div>'+
+                      '</li>';
+           }
+           $('#listCon').html(listhtml);
+           $('.loadgif').hide(); 
+             var pageH=pageHtml(data.countSum,data.pageSize,currentPage,"pageInfo");
+             $("#fotter-page").html(pageH);
+           return false;
+       }
+   });      
+  }
+// 获取列表页内容
+function ajaxLoadPage(search){
+  $.post(httpUrl+"/webSite/listFy",
+    {
+     "cs_id":cityId,
+     "typeTab":formType,"serach_qysqlp":search
+    },
+    function(data){
+      if(data.SUCCESS){
+       var companyId =data.companyId;
+       var listCon = data.fyVos;
+
+       // 公司电话
+       $('.telphone').html('官方客服：'+data.companyVo.serviceTel+'')
+       $('#copyright').html(data.companyVo.beianHao)
+   	//获取图片
+		var ids=[];
+		for(var i=0;i<listCon.length;i++){
+			ids.push(listCon[i].shiKanId);
+		}
+		var json={};
+		json["ids"]=ids;
+		json["access_secret"]=access_secret;
+		/* if(data.shuiYinZt=="1"){
+		json["watermark"]=data.shuiYinWz;
+		} */
+		json["company_id"]=companyId;
+	    $.ajax({  
+	         url: imgUrl+"/getHousePictures" ,  
+	         type:"POST",
+			 dataType:"json",
+	         async: false, 
+	         data:JSON.stringify(json),  
+	         success: function (data) {  
+	             if(data.err_msg=="success"){
+	            	 var imgs=data.data;
+	            	 for(var i=0;i<listCon.length;i++){
+	            		 A:for(var k=0;k<imgs.length;k++){
+							if(listCon[i].shiKanId==imgs[k].id){
+								listCon[i]["imgSk"]=imgs[k].path;
+								break A;
+							}
+	            			 
+	            		 }
+						}
+	             }
+	         }
+	    }); 
+       var xzqList = data.xzqVos;
+       var subwayList = data.dtXlVos;
+
+       
+
+           $('#fySum').html(data.countSum); //房源总数
+           if(data.countSum>0){
+           $('#errotips').hide()
+            }else{
+              $('#errotips').show()
+            };
+           $('#listLogo').attr('src',data.logoSrc);
+           
+           // 房源列表
+           for(var i=0; i<listCon.length;i++){
+        		var imgSk=listCon[i].imgSk;
+				if(imgSk==undefined||imgSk==""){
+					imgSk=data.moRenPic;
+				}
+        if(listhtml==''){
+          $('#listCon img').attr('src',imgSk)
+        }
+             listhtml += '<li>'+
+                      '  <a href="detail.html?id='+listCon[i].id+'&cs='+cityId+'&type='+formType+'" target="blank" class="fl conlist-img"><img src="'+imgSk+'" alt=""></a>'+
+                      '  <div class="con-list-info">'+
+                      '    <a href="detail.html?id='+listCon[i].id+'&cs='+cityId+'&type='+formType+'" target="blank" class="title">'+listCon[i].zhuBt+'</a>';
+                  if(formType ==="ChuShou"){
+                        listhtml+='<div class="price">'+
+                                  '      <span class="total"><b>'+listCon[i].chuShouZj+'</b>万</span>'+
+                                  '      <span class="unit">'+listCon[i].chuShouDj+'元/㎡</span>'+
+                                  '    </div>';
+                          }else if(formType ==="ChuZu"){
+                            listhtml+='<div class="price">'+
+                                      '      <span class="total"><b>'+listCon[i].czJg+'</b><em>元/月</em></span>'+
+                                      '    </div>';
+                            }
+
+                 listhtml+='    <div class="info-li">'+
+                      '      <i class="iconfont icon-zhuzhai"></i>'+
+                      '      <div class="zhuzhai-info">'+
+                      '        <span>'+listCon[i].shiSl+'室'+listCon[i].tingSl+'厅'+listCon[i].weiSl+'卫</span>'+
+                      '        <span>'+listCon[i].xsMj+'㎡</span>'+
+                      '        <span>'+listCon[i].fjChaoXiang+'</span>'+
+                      '        <span>'+listCon[i].zhuangXiu+'</span>'+
+                      '        <span>'+listCon[i].lcLx+'/'+listCon[i].upstairCount+'</span>'+
+                      '      </div>'+
+                      '    </div>'+
+                      '    <div class="info-li">'+
+                      '        <i class="iconfont icon-dingwei"></i>'+
+                      '      <div class="zhuzhai-info">'+
+                      '        <a class="al lpbtn">'+listCon[i].lpMc+'</a>'+
+                      '        <span class="sl"><a class="xzqbtn">'+listCon[i].xzqMc+'</a>-<a class="sqbtn">'+listCon[i].sqMc+'</a>-'+listCon[i].address+'</span>'+
+                      '      </div>'+
+                      '  </div>'+
+                      '    <div class="info-li"><i class="iconfont icon-popularity"></i>共<span>'+listCon[i].daiKanCs+'</span>次带看/<span>'+listCon[i].diffTime+'</span></div>'+
+                      '    <div class="info-li">同小区<span>'+listCon[i].countSameLp+'</span>个房源在售</div>'+
+                      '    <div class="tag-box">';
+                      var biaoqianArr = listCon[i].fjBiaoQian.split(',')
+                      var biaoQHtml = '';
+
+                      for(var j=0; j<biaoqianArr.length; j++){
+                         biaoQHtml+='<span>'+biaoqianArr[j]+'</span>'
+                      }
+                     
+                      listhtml+= biaoQHtml+
+                      '    </div>'+
+                      '  </div>'+
+                      '</li>';
+           }
+           $('#listCon').html(listhtml);
+           $('.loadgif').hide()
+
+           // 朝向
+           var cxJson = data.fjChaoXiangMap;
+           var cxHtml="";
+           for(var key in cxJson){
+              cxHtml+='<li class="option" data-id="'+key+'">'+cxJson[key]+'</li>' 
+           }
+           $('#cxList').html(cxHtml);
+
+           // 装修
+           var zxJson = data.zhuangXiuMap;
+           var zxHtml="";
+           for(var key in zxJson){
+              zxHtml+='<li class="option" data-id="'+key+'">'+zxJson[key]+'</li>' 
+           }
+           $('#zxList').html(zxHtml);
+
+           // 楼层
+           var lcJson = data.lcLxMap;
+           var lcHtml="";
+           for(var key in lcJson){
+              lcHtml+='<li class="option" data-id="'+key+'">'+lcJson[key]+'</li>' 
+           }
+           $('#lcList').html(lcHtml);
+
+           // 委托方式
+           var wtJson = data.wtFsMap;
+           var wtHtml="";
+           for(var key in wtJson){
+              wtHtml+='<li class="option" data-id="'+key+'">'+wtJson[key]+'</li>' 
+           }
+           $('#wtList').html(wtHtml);
+
+           // 建筑类型
+           var jzlxJson = data.jzLxMap;
+           var jzlxHtml="";
+           for(var key in jzlxJson){
+              jzlxHtml+='<li class="option" data-id="'+key+'">'+jzlxJson[key]+'</li>' 
+           }
+           $('#leixingList').html(jzlxHtml);
+
+           // 房龄
+           var fanglingJson = data.fangChanCyNxMap;
+           var fanglingHtml="";
+           for(var key in fanglingJson){
+              fanglingHtml+='<li class="option" data-id="'+key+'">'+fanglingJson[key]+'</li>' 
+           }
+           $('#fanglingsList').html(fanglingHtml);
+
+           // 用途
+           var yongtuListJson = data.fangWuLxMap;
+           var yongtuListHtml="";
+           for(var key in yongtuListJson){
+              yongtuListHtml+='<li class="option" data-id="'+key+'">'+yongtuListJson[key]+'</li>' 
+           }
+           $('#yongtuList').html(yongtuListHtml);
+           // 权属
+           var quanshuJson = data.fwQuanShuMap;
+           var quanshuHtml="";
+           for(var key in quanshuJson){
+              quanshuHtml+='<li class="option" data-id="'+key+'">'+quanshuJson[key]+'</li>' 
+           }
+           $('#quanshuList').html(quanshuHtml);
+
+
+           // 行政区
+           for(var i=0;i<xzqList.length; i++){
+             xzqHtml+='<a data-id="'+xzqList[i].id+'" href="javascript:;">'+xzqList[i].mc+'</a>'
+           };
+           $('#xzqList').html(xzqHtml)
+
+           // 地铁
+           for(var i=0;i<subwayList.length; i++){
+             subwayHtml+='<a data-id="'+subwayList[i].id+'" href="javascript:;">'+subwayList[i].mc+'</a>'
+           };
+           $('#subwayList').html(subwayHtml);
+           
+            // 租金字段
+           var priceList = data.jiaGeLst;
+           var priceHtml=""
+           for(var i=0;i<priceList.length;i++){
+              priceHtml += '<div class="checkbox">';
+                          
+                          var split=priceList[i].split("-");
+                          var price="";
+                          if(formType ==="ChuShou"){;
+                                  priceHtml+='  <input type="checkbox" class="inputbtn" value="'+priceList[i]+'" >'+
+                                '<i class="ico-check"></i>';
+
+                              if(split[0]==""&&split[1]!=""){
+                            	  price=split[1]+"万以上"
+                              }
+                              if(split[1]==""&&split[0]!=""){
+                            	  price=split[0]+"万以下"
+                              }
+                              if(split[1]!=""&&split[0]!=""){
+                            	  price=split[0]+"万-"+split[1]+"万";
+                              }
+                           }else if(formType ==="ChuZu"){
+                            priceHtml+='  <input type="checkbox" class="inputbtn" value="'+priceList[i]+'" >'+
+                                   '<i class="ico-check"></i>';
+                              if(split[0]==""&&split[1]!=""){
+                                price=split[1]+"元以上"
+                              }
+                              if(split[1]==""&&split[0]!=""){
+                                price=split[0]+"元以下"
+                              }
+                              if(split[1]!=""&&split[0]!=""){
+                                price=split[0]+"元-"+split[1]+"元";
+                              }
+                           }
+                          priceHtml+='  <label>'+price+'</label>'+
+                          '</div>';
+           } 
+           $('#priceFilter').html(priceHtml)
+           // 面积字段
+           var mianjiList = data.mianJiLst;
+           var mianjiHtml=""
+           for(var i=0;i<mianjiList.length;i++){
+              mianjiHtml += '<div class="checkbox">'+
+                          '  <input type="checkbox" class="inputbtn" value="'+mianjiList[i]+'">'+
+                          '  <i class="ico-check"></i>';
+              var split=mianjiList[i].split("-");
+              var mj="";
+              if(split[0]==""&&split[1]!=""){
+            	  mj=split[1]+"平以下"
+              }
+              if(split[1]==""&&split[0]!=""){
+            	  mj=split[0]+"平以上"
+              }
+              if(split[1]!=""&&split[0]!=""){
+            	  mj=split[0]+"平-"+split[1]+"平";
+              }
+                          
+              mianjiHtml+='  <label>'+mj+'</label>'+
+                          '</div>';
+           } 
+          $('#mianjiFilter').html(mianjiHtml);
+          var pageH=pageHtml(data.countSum,data.pageSize,1,"pageInfo");
+          $("#fotter-page").html(pageH);
+          // 房型字段
+          //  var fangxList = data.mianJiLst;
+          //  var fangxHtml=""
+          //  for(var i=0;i<fangxList.length;i++){
+          //     fangxHtml += '<div class="checkbox">'+
+          //                 '  <input type="checkbox" name="xs_mj">'+
+          //                 '  <i class="ico-check"></i>'+
+          //                 '  <label>'+fangxList[i]+'室</label>'+
+          //                 '</div>';
+          //  } 
+          // $('#fxFilter').html(mianjiHtml)
+       }else{
+        alert("请求数据失败")
+       }    
+    }, "json")
+  }
+
+</script>
+
+</body>
+</html>

@@ -38,47 +38,47 @@
 	  	<div class="l-row">
 	  		<div class="header-top">
 	  			<div class="fl">
-	  				<a href="#" class="logo"><img :src="logo" alt=""></a>
-	  				<span class="loca"><i class="iconfont icon-dingwei"></i><var class="loca-name">北京</var></span>
+	  				<a href="#" class="logo" id="ilogo"><img  alt=""></a>
+	  				<span class="loca" id="selLoca"><i class="iconfont icon-dingwei"></i><var class="loca-name">...</var></span>
 	  			</div>
 	  			<ul class="fr nav">
-	  				<li><a href="esf/esf.html">二手房</a></li>
-	  				<li><a href="zufang">租房</a></li>
-	  				<li><a href="maimai">商业买卖</a></li>
-	  				<li><a href="zulin">商业租赁</a></li>
-	  				<li><a href="xiaoqu">小区</a></li>
-	  				<li><a href="shangquan">商圈</a></li>
-	  				<li><a href="jingjiren">经纪人</a></li>
-	  				<li><a href="zhaopin">诚聘精英</a></li>
+	  				<li id="navEsf"><a href="listpage.html?cs=110100&type=ChuZu">二手房</a></li>
+	  				<li id="navZf"><a href="listpage.html?cs=110100&type=ChuZu">租房</a></li>
+	  				<li style="display: none;" id="navMm"><a href="maimai">商业买卖</a></li>
+	  				<li style="display: none;" id="navZl"><a href="zulin">商业租赁</a></li>
+	  				<li style="display: none;" id="navXq"><a href="xiaoqu">小区</a></li>
+	  				<li style="display: none;" id="navSq"><a href="shangquan">商圈</a></li>
+	  				<li style="display: none;" id="navjjr"><a href="jingj">经纪人</a></li>
+	  				<li style="display: none;"><a href="zhaopin">诚聘精英</a></li>
 	  			</ul>
 	  		</div>
 	  		<div class="header-text">
-	  			<h2>北京金色时光</h2>
-	  			<ul class="text-scroll">
-	  				<li>楼脉动真实在售商业用房<b>763091</b></li>
-	  				<li>楼脉动真实在售商业用房<b>763092</b></li>
-	  				<li>楼脉动真实在售商业用房<b>763093</b></li>
+	  			<h2 id="company-name">...</h2>
+	  			<ul class="text-scroll" id="company-scroll">
+	  				<li>载入中...<b></b></li>
+	  				<li>载入中...<b></b></li>
+	  				<li>载入中...<b></b></li>
 	  			</ul>
 	  		</div>
 	  		<div class="search-main">
 	  			<div class="menu" id="ser-menu">
 	  				<ul>
-	  					<li class="act item" data-type="请输入区域、商圈或楼盘名开始找房" data-btn="开始找房" param="esf">
+	  					<li class="act item" data-s="ChuShou" data-type="请输入区域、商圈或楼盘名开始找房" data-btn="开始找房" param="esf">
 	  						<span>找二手房</span>
 	  					</li>
-	  					<li class="item" data-type="请输入区域、商圈或楼盘名开始找房" data-btn="开始找房" param="zf">
+	  					<li class="item" data-s="ChuZu" data-type="请输入区域、商圈或楼盘名开始找房" data-btn="开始找房" param="zf">
 	  						<span>找租房</span>
 	  					</li>
-	  					<li class="item" data-type="请输入楼盘名称" data-btn="开始搜索" param="lp">
+	  					<li class="item" hidden data-type="请输入楼盘名称" data-btn="开始搜索" param="lp">
 	  						<span>找楼盘</span>
 	  					</li>
-	  					<li class="item" data-type="请输入区域、商圈或楼盘名开始找房" data-btn="开始找房" param="xzl">
+	  					<li class="item" hidden data-type="请输入区域、商圈或楼盘名开始找房" data-btn="开始找房" param="xzl">
 	  						<span>找写字楼</span>
 	  					</li>
-	  					<li class="item" data-type="请输入区域、商圈或楼盘名开始找房" data-btn="开始找房" param="sp">
+	  					<li class="item" hidden data-type="请输入区域、商圈或楼盘名开始找房" data-btn="开始找房" param="sp">
 	  						<span>找商铺</span>
 	  					</li>
-	  					<li class="item" data-type="请输入您关心的问题" data-btn="开始搜索" param="wt">
+	  					<li class="item" hidden data-type="请输入您关心的问题" data-btn="开始搜索" param="wt">
 	  						<span>搜问题</span>
 	  					</li>
 	  				</ul>
@@ -86,7 +86,7 @@
 	  			</div>
 	  			<div class="search-box">
 	  				<input type="text" class="search-val fl" placeholder="请输入区域、商圈或楼盘名开始找房">
-	  				<input type="button" class="search-btn fl" value="开始找房">
+	  				<input type="button" id="keybtn" class="search-btn fl" value="开始找房">
 	  			</div>
 	  		</div>
 	  	</div>
@@ -99,52 +99,56 @@
 			<div class="l-row">
 			   <h3 class="title">热门二手房</h3>
 			  <ul class="hot-house-box esfh" id="hotesf">
-		        <li class="col-3" v-for="item of esflist" v-cloak>
+                <div class="loadgif">
+			    	<i class="iconload"></i>
+			    	房源正在加载中...
+			    </div>
+		        <!-- <li class="col-3">
 		        	<a class="hot-house-img">
 		        		<img src="images/01.png" alt="">
-		        		<div class="gdshadow">{{item.zhuBt}}</div>
-		        		<div class="foucs-tab">{{item.zhuangXiu}}</div>
+		        		<div class="gdshadow">加载中...</div>
+		        		<div class="foucs-tab">加载中...</div>
 		        	</a>
 		        	<div class="hot-house-info">
 		        		<div class="info">
-		        			<span>{{item.shiSl}}室{{item.tingSl}}厅{{item.weiSl}}卫</span>
-		        			<span>{{item.xsMj}}㎡</span><span>{{item.lpMc}}</span>
+		        			<span>加载中...</span>
+		        			<span>加载中...</span>
 		        		</div>
-		        		<div class="hh-price"><span class="hh-sum"><b>{{item.chuShouZj}}</b>万元</span><span class="hh-unit"><em>{{item.chuShouDj}}</em>元/㎡</span></div>
+		        		<div class="hh-price"><span class="hh-sum"><b>000</b>万元</span><span class="hh-unit"><em>000</em>元/㎡</span></div>
 		        	</div>
-		        </li>
+		        </li> -->
 		       </ul>
 			</div>
 		</div>	
 		<!-- 热门小区 -->
-		<div class="hot-loupan hot-house">
+		<div class="hot-loupan hot-house" hidden>
 			<div class="l-row">
 			   <h3 class="title">热门小区</h3>
 			  <ul class="hot-loupan-main" id="hotxq">
-		        <li class="col-4" v-for="item of xqlist" v-cloak>
-		        	<a href="#" class="hot-loupan-img">
-		        		<img src="assets/images/loupan01.png" alt="">
+		        <li class="col-4">
+		        	<!-- <a href="#" class="hot-loupan-img ihotsq">
+		        		<img src="/images/loupan01.png" alt="">
 	                    <div class="gdshadow"></div>
 	                    <div class="gdshadow-text">
-	                    	<div class="gd-title">{{item.xqMc1}}</div>
+	                    	<div class="gd-title">加载中...</div>
 	                    	<div class="gdshadow-text-info">
-	                    		<p>在售二手房<b>155</b>套</p>
-	                    		<p>出租二手房<b>155</b>套</p>
+	                    		<p>在售二手房<b>0</b>套</p>
+	                    		<p>出租二手房<b>0</b>套</p>
 	                    	</div>
 	                    </div>
-		        	</a>
+		        	</a> -->
 		        </li>
 		       </ul>
 			</div>
 		</div>
 		<!-- 热门写字楼商铺 -->
-		<div class="hot-house">
+		<div class="hot-house" hidden>
 			<div class="l-row">
 			   <h3 class="title">热门写字楼商铺</h3>
 			  <ul class="hot-house-box">
 		        <li class="col-3">
 		        	<a class="hot-house-img">
-		        		<img src="assets/images/01.png" alt="">
+		        		<img src="" alt="">
 		        		<div class="gdshadow">龙熙顺景 上叠边户 570万</div>
 		        		<div class="foucs-tab">精装修</div>
 		        	</a>
@@ -155,7 +159,7 @@
 		        </li>
 		        <li class="col-3">
 		        	<a class="hot-house-img">
-		        		<img src="assets/images/01.png" alt="">
+		        		<img src="" alt="">
 		        		<div class="gdshadow">龙熙顺景 上叠边户 570万</div>
 		        		<div class="foucs-tab">精装修</div>
 		        	</a>
@@ -166,7 +170,7 @@
 		        </li>
 		        <li class="col-3">
 		        	<a class="hot-house-img">
-		        		<img src="assets/images/01.png" alt="">
+		        		<img src="" alt="">
 		        		<div class="gdshadow">龙熙顺景 上叠边户 570万</div>
 		        		<div class="foucs-tab">精装修</div>
 		        	</a>
@@ -177,7 +181,7 @@
 		        </li>
 		        <li class="col-3">
 		        	<a class="hot-house-img">
-		        		<img src="assets/images/01.png" alt="">
+		        		<img src="" alt="">
 		        		<div class="gdshadow">龙熙顺景 上叠边户 570万</div>
 		        		<div class="foucs-tab">精装修</div>
 		        	</a>
@@ -188,7 +192,7 @@
 		        </li>
 		        <li class="col-3">
 		        	<a class="hot-house-img">
-		        		<img src="assets/images/01.png" alt="">
+		        		<img src="" alt="">
 		        		<div class="gdshadow">龙熙顺景 上叠边户 570万</div>
 		        		<div class="foucs-tab">精装修</div>
 		        	</a>
@@ -199,7 +203,7 @@
 		        </li>
 		        <li class="col-3">
 		        	<a class="hot-house-img">
-		        		<img src="assets/images/01.png" alt="">
+		        		<img src="" alt="">
 		        		<div class="gdshadow">龙熙顺景 上叠边户 570万</div>
 		        		<div class="foucs-tab">精装修</div>
 		        	</a>
@@ -213,13 +217,28 @@
 			</div>
 		</div>	
 		<!-- 热门商圈-->
-		<div class="hot-loupan hot-house">
+		<div class="hot-loupan hot-house" hidden>
 			<div class="l-row">
 			   <h3 class="title">热门商圈</h3>
 			  <ul class="hot-loupan-main">
 		        <li class="col-4">
 		        	<a href="#" class="hot-loupan-img">
-		        		<img src="assets/images/loupan01.png" alt="">
+		        		<img src="" alt="">
+	                    <div class="gdshadow"></div>
+	                    <div class="gdshadow-text">
+	                    	<div class="gd-title">新龙城</div>
+	                    	<div class="gdshadow-text-info">
+	                    		<p>在售写字楼<b>155</b>套</p>
+	                    		<p>待租写字楼<b>155</b>套</p>
+	                    		<p>在售商铺<b>155</b>套</p>
+	                    		<p>待租商铺<b>155</b>套</p>
+	                    	</div>
+	                    </div>
+		        	</a>
+		        </li>
+		        <li class="col-4">
+		        	<a class="hot-loupan-img">
+		        		<img src="" alt="">
 	                    <div class="gdshadow"></div>
 	                    <div class="gdshadow-text">
 	                    	<div class="gd-title">新龙城</div>
@@ -234,7 +253,7 @@
 		        </li>
 		        <li class="col-4">
 		        	<a href="#" class="hot-loupan-img">
-		        		<img src="assets/images/loupan01.png" alt="">
+		        		<img src="" alt="">
 	                    <div class="gdshadow"></div>
 	                    <div class="gdshadow-text">
 	                    	<div class="gd-title">新龙城</div>
@@ -249,22 +268,7 @@
 		        </li>
 		        <li class="col-4">
 		        	<a href="#" class="hot-loupan-img">
-		        		<img src="assets/images/loupan01.png" alt="">
-	                    <div class="gdshadow"></div>
-	                    <div class="gdshadow-text">
-	                    	<div class="gd-title">新龙城</div>
-	                    	<div class="gdshadow-text-info">
-	                    		<p>在售写字楼<b>155</b>套</p>
-	                    		<p>待租写字楼<b>155</b>套</p>
-	                    		<p>在售商铺<b>155</b>套</p>
-	                    		<p>待租商铺<b>155</b>套</p>
-	                    	</div>
-	                    </div>
-		        	</a>
-		        </li>
-		        <li class="col-4">
-		        	<a href="#" class="hot-loupan-img">
-		        		<img src="assets/images/loupan01.png" alt="">
+		        		<img src="" alt="">
 	                    <div class="gdshadow"></div>
 	                    <div class="gdshadow-text">
 	                    	<div class="gd-title">新龙城</div>
@@ -286,87 +290,163 @@
 			   <h3 class="title">资讯中心</h3>
 			  <ul class="hot-house-box">
 		        <li class="col-3">
-		        	<div class="hot-house-img slide-container">
+		        	<div class="hot-house-img slideimg slide-container">
 		        	  <!-- 幻灯片内容 -->
 		        	  <div class="slide-wrap">
 		        		<div class="slide-item">
-		        			<img src="assets/images/pic01.png" alt="">
+		        			<img src="" alt="">
 		        			<div class="slide-info">
-		        				<div class="slide-title">楼脉动初级"大扫除"</div>
-		        				<div class="slide-con">3月28日早9：00，随着一生钟响，楼脉动启动了春季大扫除行动……</div>
+		        				<div class="slide-title">加载中...</div>
+		        				<div class="slide-con">加载中...</div>
 		        			</div>
 		        		</div>
 		        		<div class="slide-item">
-		        			<img src="assets/images/pic01.png" alt="">
+		        			<img src="" alt="">
 		        			<div class="slide-info">
-		        				<div class="slide-title">楼脉动初级"大扫除"</div>
-		        				<div class="slide-con">3月28日早9：00，随着一生钟响，楼脉动启动了春季大扫除行动……</div>
+		        				<div class="slide-title">加载中...</div>
+		        				<div class="slide-con">加载中...</div>
 		        			</div>
 		        		</div>
 		        		<div class="slide-item">
-		        			<img src="assets/images/pic01.png" alt="">
+		        			<img src="" alt="">
 		        			<div class="slide-info">
-		        				<div class="slide-title">楼脉动初级"大扫除"</div>
-		        				<div class="slide-con">3月28日早9：00，随着一生钟响，楼脉动启动了春季大扫除行动……</div>
+		        				<div class="slide-title">加载中...</div>
+		        				<div class="slide-con">加载中...</div>
 		        			</div>
 		        		</div>
 		        		<div class="slide-item">
-		        			<img src="assets/images/pic01.png" alt="">
+		        			<img src="" alt="">
 		        			<div class="slide-info">
-		        				<div class="slide-title">楼脉动初级"大扫除"</div>
-		        				<div class="slide-con">3月28日早9：00，随着一生钟响，楼脉动启动了春季大扫除行动……</div>
+		        				<div class="slide-title">加载中...</div>
+		        				<div class="slide-con">加载中...</div>
 		        			</div>
 		        		</div>
 		        	  </div>
-		        	  <a class="morebtn">更多资讯>></a>
+		        	  <a class="morebtn" href="javascript:moreInfo('xw');void(0);">更多新闻>></a>
 		        	</div>
 		        </li>
-		        <li class="col-3">
-		        	<a class="hot-house-img">
-		        		<img src="images/pic02.jpg" alt="">
-		        		<div class="bg-title">利好！环京北三县纳入副中心规划</div>
+		        <li class="col-3 imgh170">
+		        	<a class="hot-house-img" id="zx-click">
+		        		<img id="zx-img" src="" alt="">
+		        		<div id="zx-title" class="bg-title">加载中...</div>
 		        	</a>
-		        	<div class="news-box">
+		        	<div class="news-box" id="zx-news">
 		        	    <h4 class="title">房产资讯<a href="#" class="fr">更多资讯>></a></h3>
-		        		<span class="new-li"><a href="#">万科售楼部被砸！万科要打响2017年降价第一枪？</a><em class="date">03-27</em></span>
-		        		<span class="new-li"><a href="#">万科售楼部被砸！万科要打响2017年降价第一枪？</a><em class="date">03-27</em></span>
-		        		<span class="new-li"><a href="#">万科售楼部被砸！万科要打响2017年降价第一枪？</a><em class="date">03-27</em></span>
-		        		<span class="new-li"><a href="#">万科售楼部被砸！万科要打响2017年降价第一枪？</a><em class="date">03-27</em></span>
-		        		<span class="new-li"><a href="#">万科售楼部被砸！万科要打响2017年降价第一枪？</a><em class="date">03-27</em></span>
+		        		<span class="new-li"><a href="#">载入中...</a><em class="date">...</em></span>
+		        		<span class="new-li"><a href="#">载入中...</a><em class="date">...</em></span>
+		        		<span class="new-li"><a href="#">载入中...</a><em class="date">...</em></span>
+		        		<span class="new-li"><a href="#">载入中...</a><em class="date">...</em></span>
+		        		<span class="new-li"><a href="#">载入中...</a><em class="date">...</em></span>
 		        	</div>
 		        </li>
 
-		        <li class="col-3">
-		        	<a class="hot-house-img">
-		        		<img src="assets/images/pic02.jpg" alt="">
-		        		<div class="bg-title">利好！环京北三县纳入副中心规划</div>
+		        <li class="col-3 imgh170">
+		        	<a class="hot-house-img" id="bk-click">
+		        		<img id="bk-img" src="" alt="">
+		        		<div id="bk-title" class="bg-title">载入中...</div>
 		        	</a>
-		        	<div class="news-box">
-		        	    <h4 class="title">房产百科<a href="#" class="fr">更多资讯>></a></h3>
-		        		<span class="new-li"><a href="#">看了少奋斗十年，秘而不传的升职加薪办公室风水</a><em class="date">03-27</em></span>
-		        		<span class="new-li"><a href="#">企业厂房选址的六大秘籍</a><em class="date">03-27</em></span>
-		        		<span class="new-li"><a href="#">入驻“纯租赁”写字楼对企业有何好处？</a><em class="date">03-27</em></span>
-		        		<span class="new-li"><a href="#">在北京企业选址为什么如此重要？</a><em class="date">03-27</em></span>
-		        		<span class="new-li"><a href="#">剖析优质写字楼投资应该具备的七大要素！</a><em class="date">03-27</em></span>
+		        	<div class="news-box" id="bk-news">
+		        	    <h4 class="title">房产百科<a href="#" class="fr">更多百科>></a></h4>
+		        		<span class="new-li"><a href="#">载入中...</a><em class="date">...</em></span>
+		        		<span class="new-li"><a href="#">载入中...</a><em class="date">...</em></span>
+		        		<span class="new-li"><a href="#">载入中...</a><em class="date">...</em></span>
+		        		<span class="new-li"><a href="#">载入中...</a><em class="date">...</em></span>
+		        		<span class="new-li"><a href="#">载入中...</a><em class="date">...</em></span>
 		        	</div>
 		        </li>
 		       </ul>
 			</div>
 		</div>
 	</div>
-	<custom-footer></custom-select>
+<div class="popupbox sel-city">
+      <div class="title"><h2>请选择城市</h2> <i class="iconfont close icon-close" id="popClose"></i></div>
+      <div class="citylist">
+      	<div class="con" id="chengshi">
+      		<!-- <a>北京</a> -->
+
+      	</div>
+      </div>
+</div>
+<div class="popupbox erotips">
+      <div class="title"><h2>Error</h2> <i class="iconfont close icon-close" id="popClose"></i></div>
+      <div class="tipscon"></div>
+</div>
+<div class="popupbg"></div>
+<div class="footer">
+    <div class="footer-nav">
+    <div class="l-row">
+      <ul class="">
+	      <li><a href="javascript:moreInfo('0');void(0);">了解我们</a></li>
+	      <li><a href="javascript:moreInfo('1');void(0);">关于我们</a></li>
+	      <li><a href="javascript:moreInfo('2');void(0);">联系我们</a></li>
+	      <li><a href="javascript:moreInfo('4');void(0);">隐私声明</a></li>
+      </ul>
+      
+     </div>
+    </div>
+    <div class="l-row">
+      <!-- <div class="footer-user">
+            自定义内容
+      </div> -->
+      <div class="" style="color: #fff; text-align: center; margin-top:20px;">
+         <div class="contact-fl">
+          <p class="telphone">官方客服：400</p>
+          <p>周一至周六</p>
+          <p>（早9：00-晚18：00）</p>
+         </div>
+         <div class="contact-fr" style="margin-top: 20px;">
+          <img src="assets/images/ewm.png" alt="">
+         </div>
+      </div>
+    </div>
+    <div class="copyright" id="copyright">...</div>
+  </div>
 </div>
 <script type="text/javascript" src="assets/js/jquery-min.js"></script>
-<script type="text/javascript" src="assets/js/vue.js"></script>
-<script type="text/javascript" src="assets/js/vuecustom.js"></script>
-<script type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script type="text/javascript" src="assets/js/jquery-ui.min.js?version=1.12.1"></script> <!-- jquery ui -->
-<script type="text/javascript" src="assets/js/jquery-ui-timepicker-addon.js"></script> <!-- 日期插件 -->
+<script type="text/javascript" src="assets/js/jquery.form.min.js"></script>
 <script type="text/javascript" src="assets/js/common.js"></script>
 <script type="text/javascript">
 
+
+// 客户端城市
+var cityId = '';
+if(localStorage.locaCityId !=undefined){
+	    cityId = localStorage.locaCityId;     
+	}else{
+		cityId = ''
+}
+// 城市选择
+$('#selLoca').on('click',function(){
+	$('.popupbg').fadeIn('fast');
+	$('.sel-city').fadeIn('fast');
+	popupcenter();
+	$(document).on('click','#chengshi a',function(){
+		$(this).addClass('act').siblings().removeClass('act');
+		localStorage.locaCityId = $(this).attr('data-id');
+		localStorage.locaCityName = $(this).text();
+		cityId = localStorage.locaCityId;
+		$('.loca-name').text($(this).text())
+		$('.sel-city').hide();	
+	    $('.popupbg').hide();
+		
+		loadPageData(); //加载地图数据
+			
+	})
+})
 $(document).ready(function(){
-	loadPageData();
+	// initPage()
+	initPageDate();
+	$('.search-val').focus();
+	 bindKey('.search-val','#keybtn');
+	 var typeVal = "ChuShou"
+    $('#ser-menu li').on('click',function(){
+        typeVal=$(this).attr('data-s')
+    	$('.search-btn').val(btnval);
+    })
+	$('#keybtn').on('click',function(){
+		var relval = $(".search-val").val();
+		window.location='listpage.html?cs='+cityId+'&type='+typeVal+'&serach_qysqlp='+relval+''
+	});
 	// 幻灯片
 	lSlide(true,false,true);
 	// baner文字滚动效果
@@ -395,49 +475,338 @@ $(document).ready(function(){
   })
 });
 
+
+
+
+
+// 初始化页面
+function initPageDate(){
+$.post(httpUrl+"/webSite/index",{"cs_id":cityId},
+		function(data){
+		     if(data.SUCCESS){ 
+		    	 var cs = "";
+					var company = "";
+					var companyId =data.companyId;
+					var fyVos = data.fyVos; //热门二手房
+					var csVos = data.csVos; //城市
+                    var chengshiHtml =''
+                    for(var i=0; i<csVos.length; i++){
+                        chengshiHtml += '<a data-id="'+csVos[i].id+'">'+csVos[i].csMc.replace('市','')+'</a>'
+                    }
+                    $('#telphone').html('官方客服:'+data.companyVo.serviceTel+'')
+                    $('#copyright').html(data.companyVo.beianHao)
+                    $('#chengshi').html(chengshiHtml);
+					var city = csVos[0].csMc.replace('市','');
+					
+                     // localStorage.clear(); 
+                    if(localStorage.locaCityId !=undefined){
+                    	cityId = localStorage.locaCityId;
+		                $('.loca-name').text(localStorage.locaCityName)
+                    }else{
+                    	$('.loca-name').text(city);//城市
+						$('.loca-name').attr("data-id",csVos[0].id);//城市
+						cityId = $('.loca-name').attr("data-id");
+                    }
+
+					
+                    
+					$('#ilogo img').attr('src',data.logoSrc); //logo
+					$('#ilogo img').attr('alt',data.companyVo.companyName);
+	  				$('#navEsf a').attr('href','listpage.html?cs='+cityId+'&type=ChuShou');	
+	  				$('#navZf a').attr('href','listpage.html?cs='+cityId+'&type=ChuZu');
+					$('#company-name').text(data.companyVo.companyName);
+					
+                    if(fyVos ==''){
+                    	$('.erotips').fadeIn()
+                    	$('.popupbg').fadeIn()
+                        $('.erotips .tipscon').html('该城市下还没有房源，请切换其他城市');
+					}
+					//获取图片
+					var ids=[];
+					for(var i=0;i<fyVos.length;i++){
+						ids.push(fyVos[i].shiKanId);
+					}
+					var json={};
+					json["ids"]=ids;
+					json["access_secret"]=access_secret;
+			/* 		if(data.shuiYinZt=="1"){
+					json["watermark"]=data.shuiYinWz;
+					} */
+					json["company_id"]=companyId;
+				    $.ajax({  
+				         url: imgUrl+"/getHousePictures" ,  
+				         type:"POST",
+						 dataType:"json",
+				         async: false, 
+				         data:JSON.stringify(json),  
+				         success: function (data) {  
+				             if(data.err_msg=="success"){
+				            	 var imgs=data.data;
+				            	 for(var i=0;i<fyVos.length;i++){
+				            		 A:for(var k=0;k<imgs.length;k++){
+										if(fyVos[i].shiKanId==imgs[k].id){
+											fyVos[i]["imgSk"]=imgs[k].path;
+											break A;
+										}
+				            			 
+				            		 }
+									}
+				             }
+				         },
+
+				    }); 
+					
+					var fyhtml ="";
+					// var city = csVos[0].csMc.replace('市','');
+
+					
+					// $('.loca-name').html(city);//城市
+					// $('.loca-name').attr("data-id",csVos[0].id);//城市
+					// cityId = $('.loca-name').attr("data-id")
+					$('#ilogo img').attr('src',data.logoSrc); //logo
+					$('#ilogo img').attr('alt',data.companyVo.companyName);
+	  				$('#navEsf a').attr('href','listpage.html?cs='+cityId+'&type=ChuShou');	
+	  				$('#navZf a').attr('href','listpage.html?cs='+cityId+'&type=ChuZu');
+					$('#company-name').text(data.companyVo.companyName);
+					var scroll_html='<li>'+data.companyVo.companyName+'真实在售二手房<b>'+data.fyCountSum[0]+'</b></li>';
+					scroll_html+='<li>'+data.companyVo.companyName+'真实在租房<b>'+data.fyCountSum[1]+'</b></li>';
+					$('#company-scroll').html(scroll_html);
+	  				// $('#navMm a').attr('href','listpage.html?cs='+attrCsid+'&type=SyMaiMai');
+	  				// $('#navXq a').attr('href','listpage.html?cs='+attrCsid+'&type=SyZuLin');
+					for(var i=0;i<fyVos.length;i++){
+						var imgSk=fyVos[i].imgSk;
+						if(imgSk==undefined||imgSk==""){
+							imgSk=data.moRenPic;
+						}
+					  fyhtml += '<li class="col-3">'+
+								'	<a href="detail.html?cs='+cityId+'&id='+fyVos[i].id+'&type=ChuShou" class="hot-house-img">'+
+								'		<img src="'+imgSk+'" alt="">'+
+								'		<div class="gdshadow">'+fyVos[i].zhuBt+'</div>'+
+								'		<div class="foucs-tab">'+fyVos[i].zhuangXiu+'</div>'+
+								'	</a>'+
+								'	<div class="hot-house-info">'+
+								'		<div class="info"><span>'+fyVos[i].shiSl+'室'+fyVos[i].tingSl+'厅'+fyVos[i].weiSl+'卫</span><span>'+fyVos[i].xsMj+'㎡</span><span>'+fyVos[i].lpMc+'</span></div>'+
+								'		<div class="hh-price"><span class="hh-sum"><b>'+fyVos[i].chuShouZj+'</b>万元</span><span class="hh-unit"><em>'+fyVos[i].chuShouDj+'</em>元/㎡</span></div>'+
+								'	</div>'+
+								'</li>'
+					}
+					$('#hotesf').html(fyhtml);
+
+					//热门小区
+					var lpVos = data.lpVos;
+					var lphtml ="";
+					for(var i=0;i<lpVos.length;i++){
+					  lphtml += '<li class="col-4">'+
+								'	<a href="#" class="hot-loupan-img">'+
+								'		<img src="" alt="">'+
+								'        <div class="gdshadow"></div>'+
+								'        <div class="gdshadow-text">'+
+								'        	<div class="gd-title">'+lpVos[i].xqMc1+'</div>'+
+								'        	<div class="gdshadow-text-info">'+
+								'        		<p>在售二手房<b>155</b>套</p>'+
+								'        		<p>出租二手房<b>155</b>套</p>'+
+								'        	</div>'+
+								'        </div>'+
+								'	</a>'+
+								'</li>';
+					}
+					$('#hotxq').html(lphtml);
+					//新闻 资讯 百科
+					var xinWenVos = data.xinWenVos;
+					var xinwen='';
+					$.each(xinWenVos,function(i,value){
+					 xinwen+='<div class="slide-item" onclick="viewNews(\''+value.id+'\',\'xw\');">'
+	        			      +'<img src="'+value.attr1+'" alt="">'
+	        			      +'<div class="slide-info">'
+	        			      +'<div class="slide-title">'+value.biaoTi+'</div>'
+	        			      +'<div class="slide-con">'+value.zhaiYao+'</div>'
+	        			      +'</div>'
+	        			      +'</div>';
+					});
+					$(".slide-wrap").html(xinwen);
+					var ziXunVos = data.ziXunVos;
+					var zixun='<h4 class="title">房产资讯<a href="javascript:moreInfo(\'zx\');void(0);" class="fr">更多资讯>></a></h4>';
+					$.each(ziXunVos,function(i,value){
+						if(i==0){
+						$("#zx-img").attr("src",value.attr1);
+						$("#zx-title").text(value.biaoTi);
+						$("#zx-click").attr("onclick","viewNews('"+value.id+"','zx');");
+						}
+						zixun+='<span class="new-li"><a href="javascript:viewNews(\''+value.id+'\',\'zx\');">'+value.biaoTi+'</a><em class="date">'+formatDate(value.modifyDate)+'</em></span>';
+					});
+					$("#zx-news").html(zixun);
+					var baiKeVos = data.baiKeVos;
+					var baike='<h4 class="title">房产百科<a href="javascript:moreInfo(\'bk\');void(0);" class="fr">更多百科>></a></h4>';
+					$.each(baiKeVos,function(i,value){
+						if(i==0){
+						$("#bk-img").attr("src",value.attr1);
+						$("#bk-title").text(value.wenTi);
+						$("#bk-click").attr("onclick","viewNews('"+value.id+"','bk');");
+						}
+						baike+='<span class="new-li"><a href="javascript:viewNews(\''+value.id+'\',\'bk\');">'+value.wenTi+'</a><em class="date">'+formatDate(value.modifyDate)+'</em></span>';
+					});
+					$("#bk-news").html(baike);
+
+		     }
+		     else{
+		    	 alert("首页访问失败!");
+		     }
+	    }, "json");
+	return false;
+}
+
 // 获取数据
 function loadPageData(){
-	new Vue({
-		el:"#findex",
-		data:{
-		   logo:"",
-	       esflist:[],
-	       xqlist:[],
-	       xzllist:[],
-	       sqlist:[],
-	    },
+$.post(httpUrl+"/webSite/index",{"cs_id":cityId},
+		function(data){
+		     if(data.SUCCESS){ 
+		    	 var cs = "";
+					var company = "";
+					var companyId =data.companyId;
+					var fyVos = data.fyVos; //热门二手房
+					var csVos = data.csVos; //城市
 
-	    // created(){
-	    // 	axios.post('/index',{
-	    // 		web_site:'http://wz.fanteren.com',
-	    // 	})
-	    // 	   .then((response)=>{
-	    // 	      this.logo = response.data.logoSrc;
-	    // 	      this.esflist = response.data.fyVos;
-	    // 	      this.xqlist = response.data.lpVos;
-	    // 	   })
-	    // 	   .catch((error)=>{
-	    // 		  alert("请求数据失败")
-	    // 	   })
-	    // }
-	    mounted(){
-            this.$nextTick(()=>{
-                var that=this;
-                $.post("http://192.168.1.16:7001/webSite/index",
-                	function(data){
-	                	 if(data.SUCCESS){
-	                        that.logo = data.logoSrc; 
-	                        that.esflist = data.fyVos; 
-	                        that.xqlist = data.lpVos; 
-	                     }else{
-	                     	alert("请求数据失败")
-	                     }
-                	}, "json")
-      
-            })
-        }
-		
-	});
+                    
+					if(fyVos ==''){
+						$('.erotips').fadeIn()
+                    	$('.popupbg').fadeIn()
+                        $('.erotips .tipscon').html('该城市下还没有房源，请切换其他城市');
+					}
+					//获取图片
+					var ids=[];
+					for(var i=0;i<fyVos.length;i++){
+						ids.push(fyVos[i].shiKanId);
+					}
+					var json={};
+					json["ids"]=ids;
+					json["access_secret"]=access_secret;
+			/* 		if(data.shuiYinZt=="1"){
+					json["watermark"]=data.shuiYinWz;
+					} */
+					json["company_id"]=companyId;
+				    $.ajax({  
+				         url: imgUrl+"/getHousePictures" ,  
+				         type:"POST",
+						 dataType:"json",
+				         async: false, 
+				         data:JSON.stringify(json),  
+				         success: function (data) {  
+				             if(data.err_msg=="success"){
+				            	 var imgs=data.data;
+				            	 for(var i=0;i<fyVos.length;i++){
+				            		 A:for(var k=0;k<imgs.length;k++){
+										if(fyVos[i].shiKanId==imgs[k].id){
+											fyVos[i]["imgSk"]=imgs[k].path;
+											break A;
+										}
+				            			 
+				            		 }
+									}
+				             }
+				         },
+
+				    }); 
+					
+					var fyhtml ="";
+					// var city = csVos[0].csMc.replace('市','');
+
+					
+					// $('.loca-name').html(city);//城市
+					// $('.loca-name').attr("data-id",csVos[0].id);//城市
+					// cityId = $('.loca-name').attr("data-id")
+					$('#ilogo img').attr('src',data.logoSrc); //logo
+					$('#ilogo img').attr('alt',data.companyVo.companyName);
+	  				$('#navEsf a').attr('href','listpage.html?cs='+cityId+'&type=ChuShou');	
+	  				$('#navZf a').attr('href','listpage.html?cs='+cityId+'&type=ChuZu');
+					$('#company-name').text(data.companyVo.companyName);
+					var scroll_html='<li>'+data.companyVo.companyName+'真实在售二手房<b>'+data.fyCountSum[0]+'</b></li>';
+					scroll_html+='<li>'+data.companyVo.companyName+'真实在租房<b>'+data.fyCountSum[1]+'</b></li>';
+					$('#company-scroll').html(scroll_html);
+	  				// $('#navMm a').attr('href','listpage.html?cs='+attrCsid+'&type=SyMaiMai');
+	  				// $('#navXq a').attr('href','listpage.html?cs='+attrCsid+'&type=SyZuLin');
+					for(var i=0;i<fyVos.length;i++){
+						var imgSk=fyVos[i].imgSk;
+						if(imgSk==undefined||imgSk==""){
+							imgSk=data.moRenPic;
+						}
+					  fyhtml += '<li class="col-3">'+
+								'	<a href="detail.html?cs='+cityId+'&id='+fyVos[i].id+'&type=ChuShou" class="hot-house-img">'+
+								'		<img src="'+imgSk+'" alt="">'+
+								'		<div class="gdshadow">'+fyVos[i].zhuBt+'</div>'+
+								'		<div class="foucs-tab">'+fyVos[i].zhuangXiu+'</div>'+
+								'	</a>'+
+								'	<div class="hot-house-info">'+
+								'		<div class="info"><span>'+fyVos[i].shiSl+'室'+fyVos[i].tingSl+'厅'+fyVos[i].weiSl+'卫</span><span>'+fyVos[i].xsMj+'㎡</span><span>'+fyVos[i].lpMc+'</span></div>'+
+								'		<div class="hh-price"><span class="hh-sum"><b>'+fyVos[i].chuShouZj+'</b>万元</span><span class="hh-unit"><em>'+fyVos[i].chuShouDj+'</em>元/㎡</span></div>'+
+								'	</div>'+
+								'</li>'
+					}
+					$('#hotesf').html(fyhtml);
+
+					//热门小区
+					var lpVos = data.lpVos;
+					var lphtml ="";
+					for(var i=0;i<lpVos.length;i++){
+					  lphtml += '<li class="col-4">'+
+								'	<a href="#" class="hot-loupan-img">'+
+								'		<img src="" alt="">'+
+								'        <div class="gdshadow"></div>'+
+								'        <div class="gdshadow-text">'+
+								'        	<div class="gd-title">'+lpVos[i].xqMc1+'</div>'+
+								'        	<div class="gdshadow-text-info">'+
+								'        		<p>在售二手房<b>155</b>套</p>'+
+								'        		<p>出租二手房<b>155</b>套</p>'+
+								'        	</div>'+
+								'        </div>'+
+								'	</a>'+
+								'</li>';
+					}
+					$('#hotxq').html(lphtml);
+					//新闻 资讯 百科
+					var xinWenVos = data.xinWenVos;
+					var xinwen='';
+					$.each(xinWenVos,function(i,value){
+					 xinwen+='<div class="slide-item" onclick="viewNews(\''+value.id+'\',\'xw\');">'
+	        			      +'<img src="'+value.attr1+'" alt="">'
+	        			      +'<div class="slide-info">'
+	        			      +'<div class="slide-title">'+value.biaoTi+'</div>'
+	        			      +'<div class="slide-con">'+value.zhaiYao+'</div>'
+	        			      +'</div>'
+	        			      +'</div>';
+					});
+					$(".slide-wrap").html(xinwen);
+					var ziXunVos = data.ziXunVos;
+					var zixun='<h4 class="title">房产资讯<a href="javascript:moreInfo(\'zx\');void(0);" class="fr">更多资讯>></a></h4>';
+					$.each(ziXunVos,function(i,value){
+						if(i==0){
+						$("#zx-img").attr("src",value.attr1);
+						$("#zx-title").text(value.biaoTi);
+						$("#zx-click").attr("onclick","viewNews('"+value.id+"','zx');");
+						}
+						zixun+='<span class="new-li"><a href="javascript:viewNews(\''+value.id+'\',\'zx\');">'+value.biaoTi+'</a><em class="date">'+formatDate(value.modifyDate)+'</em></span>';
+					});
+					$("#zx-news").html(zixun);
+					var baiKeVos = data.baiKeVos;
+					var baike='<h4 class="title">房产百科<a href="javascript:moreInfo(\'bk\');void(0);" class="fr">更多百科>></a></h4>';
+					$.each(baiKeVos,function(i,value){
+						if(i==0){
+						$("#bk-img").attr("src",value.attr1);
+						$("#bk-title").text(value.wenTi);
+						$("#bk-click").attr("onclick","viewNews('"+value.id+"','bk');");
+						}
+						baike+='<span class="new-li"><a href="javascript:viewNews(\''+value.id+'\',\'bk\');">'+value.wenTi+'</a><em class="date">'+formatDate(value.modifyDate)+'</em></span>';
+					});
+					$("#bk-news").html(baike);
+
+		     }
+		     else{
+		    	 alert("首页访问失败!");
+		     }
+	    }, "json");
+	return false;
+}
+function viewNews(id,lx){
+	window.location="new-list.html?id="+id+"&lx="+lx+"&cs="+cityId;
 }
 
 </script>

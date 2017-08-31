@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>资讯中心列表页</title>
+<meta name="keywords" content="#" />
+<meta name="description" content="#" />
+<meta charset="utf-8" />
+<!-- 强制使用高版本浏览器渲染 -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<!-- 强制使用webkit -->
+<meta name="renderer" content="webkit">
+<!-- 禁止百度移动端转码 -->
+<meta http-equiv="Cache-Control" content="no-transform " />
+<!-- 清除缓存刷新 -->
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<link rel="stylesheet" type="text/css" href="assets/fonts/iconfont.css">
+<link rel="stylesheet" type="text/css" href="assets/css/timepicker.css">
+<link rel="stylesheet" type="text/css" href="assets/css/base.css">
+<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="top-menu">
+	<div class="l-row">
+		<div class="top-nav fl">
+			<a href="#">首页</a>
+			<a href="#" class="act">商业买卖</a>
+			<a href="#">商业租贸</a>
+			<a href="#">商圈</a>
+			<a href="#">经纪人</a>
+		</div>
+		<div class="fr">
+			<i class="iconfont icon-dianhua"></i>热线电话：4009998899
+		</div>
+	</div>
+</div>
+<div class="serach-main">
+	<div class="l-row">
+		<div class="serach-sel">
+			<a href="#" class="logo fl"><img src="images/logo2.png" alt=""></a>
+			<h5 class="name">商业租贸</h5>
+			<div class="sel-tab">
+				<a href="#" class="act">写字楼买卖</a>
+				<a href="#">商铺买卖</a>
+			</div>
+		</div>
+		<div class="serach-box">
+			<input type="text" class="ipttext" placeholder="请输入区域、商圈或者楼盘名开始找房">
+			<button type="button"><i class="iconfont icon-sousuo"></i></button>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="l-row">
+		<div class="news-nav fl">
+			<ul>
+			    <b>楼脉动</b>
+				<li><a href="#">了解楼脉动</a></li>
+				<li><a href="#">关于楼脉动</a></li>
+				<li><a href="#">联系我们</a></li>
+				<li><a href="#">加入我们</a></li>
+				<b>资讯中心</b>
+				<li class="act"><a href="#">公司新闻</a></li>
+				<li><a href="">房产资讯</a></li>
+				<li><a href="#">房产百科</a></li>
+			</ul>
+		</div>
+		<div class="news-article fl marb30">
+			<h1 class="title">上海为何能取代香港成中国最大的办公楼市场？</h1>
+			<span class="date">发布时间：2017-04-13 17：38：38</span>
+			<div class="art-con">
+				<p>海为何能取代香港成中国最大的办公楼市场？海为何能取代香港成中国最大的办公楼市场？海为何能取代香港成中国最大的办公楼市场？海为何能取代香港成中国最大的办公楼市场？</p>
+				<p>海为何能取代香港成中国最大的办公楼市场？海为何能取代香港成中国最大的办公楼市场？海为何能取代香港成中国最大的办公楼市场？海为何能取代香港成中国最大的办公楼市场？</p>
+				<img src="images/img01.png" alt="">
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="footer">
+	<div class="l-row">
+	  <div class="fl">
+		<ul class="footer-nav">
+			<li><a href="#">关于楼脉动</a></li>
+			<li><a href="#">网站地图</a></li>
+			<li><a href="#">联系我们</a></li>
+		</ul>
+		<div class="copyright">版权所有  2017  楼脉动科技有限公司  www.loumaidong.com  京ICP备15055422号-1</div>
+	  </div>
+	  <div class="fr">
+	  	 <div class="contact-fl fl">
+	  	 	<p>官方客服：400-666-9988</p>
+	  	 	<p>周一至周六</p>
+	  	 	<p>（早9：00-晚18：00）</p>
+	  	 </div>
+	  	 <div class="contact-fr fr">
+	  	 	<img src="images/ewm.png" alt="">
+	  	 </div>
+	  </div>
+	</div>
+</div>
+
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js?version=1.12.1"></script> <!-- jquery ui -->
+<script type="text/javascript" src="js/jquery-ui-timepicker-addon.js"></script> <!-- 日期插件 -->
+<script src="js/common.js"></script>
+<script type="text/javascript">
+
+	// 首页banner图片滚动
+	$(window).scroll(function(){
+	  	postop = $(window).scrollTop()/21;
+	  	if (postop < 30) {
+	  		$('.header').css('background-position-y',-postop+'px')
+	  	}
+	  })
+	// 首页顶部搜索标签切换
+	$('#ser-menu li').on('click',function(){
+		$(this).addClass('act').siblings().removeClass('act');
+		arrowL = $(this).prop('offsetLeft')+$(this).width()/2;
+		$('#ser-menu .arrow').css('left',arrowL);
+		placeval = $(this).attr('data-type');
+		btnval = $(this).attr('data-btn');
+		// index = $(this).index();
+		$('.search-val').attr('placeholder',placeval);
+		$('.search-btn').val(btnval);
+	});
+    
+    function fntab(oWrap,aItem){
+       //幻灯片初始化
+       var oWrap = $(oWrap);
+       var aItem = $(aItem);
+	   oWrap.css('width',oWrap.width()+"px"); // 
+	   aItem.css('width',oWrap.width()+"px"); // 
+	   var slideLen = aItem.length;
+	   var slideHtml = "";
+	   var num = 0;
+	   for(var i=0; i<slideLen;i++){
+	     slideHtml += '<span class="slide-bullet"></span>';
+	   }
+	   $('.slide-button').append(slideHtml);
+	   $('.slide-bullet').eq(0).addClass('slide-active');
+  
+	   // 添加点击事件
+	   $('.slide-bullet').on('click',function(){
+		   	var slideIndex = $(this).index();
+		   	var slideLeft = -slideIndex * aItem.width()+'px';
+		   	$(this).addClass('slide-active').siblings().removeClass('slide-active');
+		   	oWrap.css('transform','translate3d( '+slideLeft+', 0, 0)')
+	   });
+	   timer = setInterval(function(){
+	   	 num++;
+	   	 num = num%=slideLen;
+   	 	 slideIndex =num;
+	     slideLeft = -slideIndex * aItem.width()+'px';
+	   	 $('.slide-bullet').eq(num).addClass('slide-active').siblings().removeClass('slide-active');
+	   	 oWrap.css('transform','translate3d( '+slideLeft+', 0, 0)')
+	   },3000)
+ 
+  }
+  fntab('.slide-wrap','.slide-item')
+  
+</script>
+
+</body>
+</html>

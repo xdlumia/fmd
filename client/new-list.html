@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>资讯中心列表页</title>
+<meta name="keywords" content="#" />
+<meta name="description" content="#" />
+<meta charset="utf-8" />
+<!-- 强制使用高版本浏览器渲染 -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<!-- 强制使用webkit -->
+<meta name="renderer" content="webkit">
+<!-- 禁止百度移动端转码 -->
+<meta http-equiv="Cache-Control" content="no-transform " />
+<!-- 清除缓存刷新 -->
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<link rel="stylesheet" type="text/css" href="assets/fonts/iconfont.css">
+<link rel="stylesheet" type="text/css" href="assets/css/timepicker.css">
+<link rel="stylesheet" type="text/css" href="assets/css/base.css">
+<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="top-menu">
+	<div class="l-row">
+		<div class="top-nav fl">
+			<a href="index.html">首页</a>
+	        <a id="esfTopNav" href="listpage.html?cs=110100&type=ChuZu">二手房</a>
+	        <a id="zfTopNav" href="listpage.html?cs=110100&type=ChuZu">租房</a>
+	        <a href="deals.html" hidden>商业买卖</a>
+	        <a href="zumao.html" hidden>商业租贸</a>
+	        <a href="shangquan.html" hidden>商圈</a>
+	        <a href="jingjiren.html" hidden>经纪人</a>
+		</div>
+		<div class="fr" hidden>
+			<i class="iconfont icon-dianhua"></i><em class="telphone">热线电话：400</em>
+		</div>
+	</div>
+</div>
+<!-- <div class="serach-main">
+	<div class="l-row">
+		<div class="serach-sel">
+			<a href="#" class="logo fl"><img src="images/logo2.png" alt=""></a>
+			<h5 class="name">商业租贸</h5>
+			<div class="sel-tab">
+				<a href="#" class="act">写字楼买卖</a>
+				<a href="#">商铺买卖</a>
+			</div>
+		</div>
+		<div class="serach-box">
+			<input type="text" class="ipttext" placeholder="请输入区域、商圈或者楼盘名开始找房">
+			<button type="button"><i class="iconfont icon-sousuo"></i></button>
+		</div>
+	</div>
+</div> -->
+
+<div class="container">
+	<div class="l-row">
+		<div class="news-nav fl">
+			<ul id="ul-act">
+			    <b>房脉动</b>
+				<li id="about-us0"><a href="javascript:aboutUs('0');void(0)">了解我们</a></li>
+				<li id="about-us1"><a href="javascript:aboutUs('1');void(0)">关于我们</a></li>
+				<li id="about-us2"><a href="javascript:aboutUs('2');void(0)">联系我们</a></li>
+				<li id="about-us3"><a href="javascript:aboutUs('3');void(0)">加入我们</a></li>
+				<li id="about-us4"><a href="javascript:aboutUs('4');void(0)">隐私声明</a></li>
+				<b>资讯中心</b>
+				<li class="act" id="news-atc"><a href="javascript:buildNews(1);void(0)">公司新闻</a></li>
+				<li id="redian-atc"><a href="javascript:buildInfo(1);void(0)">房产资讯</a></li>
+				<li id="baike-act"><a href="javascript:buildBaike(1);void(0)">房产百科</a></li>
+			</ul>
+		</div>
+		<div id="main-contant">
+		<!-- <ul class="news-ul fl">
+			<h3 class="title">公司新闻</h3>
+			<li>
+				<div class="li-con bg">
+					<a href="" class="img"><img src="images/img01.png" alt=""></a>
+					<div class="news-li-info">
+						<h4><a class="title">上海为何能取代香港成中国最大的办公楼市场？</a><span class="date">发布时间：2017-04-13 17:38:38</span></h4>
+						<p>上海为何能取代香港成中国最大的办公楼市场？上海为何能取代香港成中aasd国最大的办公楼市aaaa场？上海为何能取代…</p>
+					</div>
+				</div>
+				<div class="li-con">
+					<div class="news-li-info">
+						<h4><a class="title">上海为何能取代香港成中国最大的办公楼市场？</a><span class="date">发布时间：2017-04-13 17:38:38</span></h4>
+						<p>上海为何能取代香港成中国最大的办公楼市场？上海为何能取代香港成中aasd国最大的办公楼市aaaa场？上海为何能取代…成中aasd国最大的办公楼市aaaa场？上海为何能取代…</p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="li-con bg">
+					<a href="" class="img"><img src="images/img01.png" alt=""></a>
+					<div class="news-li-info">
+						<h4><a class="title">上海为何能取代香港成中国最大的办公楼市场？</a><span class="date">发布时间：2017-04-13 17:38:38</span></h4>
+						<p>上海为何能取代香港成中国最大的办公楼市场？上海为何能取代香港成中aasd国最大的办公楼市aaaa场？上海为何能取代…</p>
+					</div>
+				</div>
+				<div class="li-con">
+					<div class="news-li-info">
+						<h4><a class="title">上海为何能取代香港成中国最大的办公楼市场？</a><span class="date">发布时间：2017-04-13 17:38:38</span></h4>
+						<p>上海为何能取代香港成中国最大的办公楼市场？上海为何能取代香港成中aasd国最大的办公楼市aaaa场？上海为何能取代…成中aasd国最大的办公楼市aaaa场？上海为何能取代…</p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="li-con bg">
+					<a href="" class="img"><img src="images/img01.png" alt=""></a>
+					<div class="news-li-info">
+						<h4><a class="title">上海为何能取代香港成中国最大的办公楼市场？</a><span class="date">发布时间：2017-04-13 17:38:38</span></h4>
+						<p>上海为何能取代香港成中国最大的办公楼市场？上海为何能取代香港成中aasd国最大的办公楼市aaaa场？上海为何能取代…</p>
+					</div>
+				</div>
+				<div class="li-con">
+					<div class="news-li-info">
+						<h4><a class="title">上海为何能取代香港成中国最大的办公楼市场？</a><span class="date">发布时间：2017-04-13 17:38:38</span></h4>
+						<p>上海为何能取代香港成中国最大的办公楼市场？上海为何能取代香港成中aasd国最大的办公楼市aaaa场？上海为何能取代…成中aasd国最大的办公楼市aaaa场？上海为何能取代…</p>
+					</div>
+				</div>
+			</li>
+		</ul> -->
+		<div class="clear"></div>
+		<div class="crumbs mart20 marb20" >
+	      <div class="l-row">
+	    	<div class="page fr">
+	    		<a href="#">上一页</a>
+	    		<a href="#" class="act">1</a>
+	    		<a href="#">2</a>
+	    		<a href="#">3</a>
+	    		<span>...</span>
+	    		<a href="#">4</a>
+	    		<a href="#">100</a>
+	    		<a href="#">下一页</a>
+	    	</div>
+	       </div>
+    </div>
+    </div>
+	</div>
+</div>
+
+<div class="footer">
+    <div class="footer-nav">
+    <div class="l-row">
+      <ul class="">
+        <li><a href="javascript:moreInfo('0');void(0);">了解我们</a></li>
+        <li><a href="javascript:moreInfo('1');void(0);">关于我们</a></li>
+        <li><a href="javascript:moreInfo('2');void(0);">联系我们</a></li>
+        <li><a href="javascript:moreInfo('4');void(0);">隐私声明</a></li>
+      </ul>
+      
+     </div>
+    </div>
+    <div class="l-row">
+      <!-- <div class="footer-user">
+            自定义内容
+      </div> -->
+      <div class="" style="color: #fff; text-align: center; margin-top:20px;">
+         <div class="contact-fl">
+          <p class="telphone" hidden>官方客服：400-666-9988</p>
+          <p>周一至周六</p>
+          <p>（早9：00-晚18：00）</p>
+         </div>
+         <div class="contact-fr" style="margin-top: 20px;">
+          <img src="assets/images/ewm.png" alt="">
+         </div>
+      </div>
+    </div>
+    <div class="copyright" id="copyright" hidden></div>
+  </div>
+
+<script type="text/javascript" src="./assets/js/jquery-min.js"></script>
+<script type="text/javascript" src="./assets/js/jquery.form.min.js"></script>
+<script type="text/javascript" src="./assets/js/common.js"></script>
+<script type="text/javascript">
+var cityId = GetQueryString('cs')
+var formType = GetQueryString('type');
+var id = GetQueryString('id')
+var lx = GetQueryString('lx')
+
+$('#zfTopNav').attr('href','listpage.html?cs='+cityId+'&type=ChuZu');
+$('#esfTopNav').attr('href','listpage.html?cs='+cityId+'&type=ChuShou');
+
+if(formType ==="ChuShou"){
+   $('#fyType').text('二手房');
+   $('#priceType').text('售价');
+   $('.ipttext').attr('placeholder')
+   $('#esfTopNav').addClass('act');
+
+   $('#crumbsnav').text("二手房");
+   $('#crumbsnav').attr('href','listpage.html?cs='+cityId+'&type=ChuShou')
+   $('.hideinput .n_cs').val(cityId);
+   $('.hideinput .n_type').val(formType);
+}else if(formType ==="ChuZu"){
+   $('#fyType').text('租房');
+   $('#priceType').text('租金');
+   $('#zfTopNav').addClass('act');
+   
+   $('#crumbsnav').text("租房");
+   $('#crumbsnav').attr('href','listpage.html?cs='+cityId+'&type=ChuZu');
+   $('.hideinput .n_cs').val(cityId);
+   $('.hideinput .n_type').val(formType);
+}else if(formType ==="SyMaiMai"){
+   $('#fyType').text('商业买卖')
+}else if(formType ==="ZuLin"){
+   $('#fyType').text('租赁')
+}
+
+$(document).ready(function(){
+	if(id!=""&&id!=undefined&&lx!=""&&lx!=undefined){
+		if(lx=="xw"){
+			 $("#ul-act").children().removeClass("act");
+			  $("#news-atc").addClass("act");
+		}else if(lx=="zx"){
+			 $("#ul-act").children().removeClass("act");
+			  $("#redian-atc").addClass("act");	
+		}else if(lx=="bk"){
+			  $("#ul-act").children().removeClass("act");
+			  $("#baike-act").addClass("act");
+		}
+		viewInfo(id,lx);
+	}else if(lx!=""&&lx!=undefined){
+		if(lx=="xw"){
+			buildNews(1);
+		}else if(lx=="zx"){
+			buildInfo(1);
+		}else if(lx=="bk"){
+			buildBaike(1);
+		}else if(lx=="0"||lx=="1"||lx=="2"||lx=="4"){
+		aboutUs(lx);
+		}
+	}
+})
+	// 首页banner图片滚动
+	$(window).scroll(function(){
+	  	postop = $(window).scrollTop()/21;
+	  	if (postop < 30) {
+	  		$('.header').css('background-position-y',-postop+'px')
+	  	}
+	  })
+	// 首页顶部搜索标签切换
+	$('#ser-menu li').on('click',function(){
+		$(this).addClass('act').siblings().removeClass('act');
+		arrowL = $(this).prop('offsetLeft')+$(this).width()/2;
+		$('#ser-menu .arrow').css('left',arrowL);
+		placeval = $(this).attr('data-type');
+		btnval = $(this).attr('data-btn');
+		// index = $(this).index();
+		$('.search-val').attr('placeholder',placeval);
+		$('.search-btn').val(btnval);
+	});
+    
+    function fntab(oWrap,aItem){
+       //幻灯片初始化
+       var oWrap = $(oWrap);
+       var aItem = $(aItem);
+	   oWrap.css('width',oWrap.width()+"px"); // 
+	   aItem.css('width',oWrap.width()+"px"); // 
+	   var slideLen = aItem.length;
+	   var slideHtml = "";
+	   var num = 0;
+	   for(var i=0; i<slideLen;i++){
+	     slideHtml += '<span class="slide-bullet"></span>';
+	   }
+	   $('.slide-button').append(slideHtml);
+	   $('.slide-bullet').eq(0).addClass('slide-active');
+  
+	   // 添加点击事件
+	   $('.slide-bullet').on('click',function(){
+		   	var slideIndex = $(this).index();
+		   	var slideLeft = -slideIndex * aItem.width()+'px';
+		   	$(this).addClass('slide-active').siblings().removeClass('slide-active');
+		   	oWrap.css('transform','translate3d( '+slideLeft+', 0, 0)')
+	   });
+	   timer = setInterval(function(){
+	   	 num++;
+	   	 num = num%=slideLen;
+   	 	 slideIndex =num;
+	     slideLeft = -slideIndex * aItem.width()+'px';
+	   	 $('.slide-bullet').eq(num).addClass('slide-active').siblings().removeClass('slide-active');
+	   	 oWrap.css('transform','translate3d( '+slideLeft+', 0, 0)')
+	   },3000)
+ 
+  }
+  fntab('.slide-wrap','.slide-item')
+  //房产资讯
+  function buildInfo(currentPage){
+	  $("#ul-act").children().removeClass("act");
+	  $("#redian-atc").addClass("act");
+	  $.ajax({
+		  url:httpUrl+"/webSite/moreYhwzReDian",
+		  type:"POST",
+		  dataType:"json",
+		  data:{"currentPage":currentPage},
+		  success:function(data){
+			  if(data.SUCCESS){
+			  	// 公司电话
+				  var ziXunVos=data.ziXunVos;
+				  var html='<ul class="news-ul fl">'
+						    +'<h3 class="title" >房产资讯</h3>';
+				  $.each(ziXunVos,function(i,value){
+					        html+='<li>'
+					        var bg="";
+					        if(value.attr1!=""){
+					        	bg="bg";
+					        }
+							html+='<div class="li-con '+bg+'"  onclick="viewInfo(\''+value.id+'\',\'zx\');">';
+							if(bg!="")
+							   html+='<a href="#" class="img"><img src="'+value.attr1+'" alt=""></a>';
+							html+='<div class="news-li-info">'
+							+'<h4><a class="title">'+value.biaoTi+'</a><span class="date">发布时间：'+formatDate(value.modifyDate)+'</span></h4>'
+							+'<p>'+value.zhaiYao+'</p>'
+							+'</div>'
+							+'</div>'
+							+'</li>';
+				  });
+				  html+='</ul><div class="clear"></div>'
+					  +'<div class="crumbs mart20 marb20" >'
+					  +'<div class="l-row"><div class="page fr">';
+				  html+=pageHtml(data.countSum,data.pageSize,currentPage,"buildInfo");
+				  html+='</div>';
+				  html+='</div>';
+				  html+='</div>'; 
+					$("#main-contant").html(html);
+			  }
+		  }
+	  })
+  }
+  //公司新闻
+  function buildNews(currentPage){
+	  $("#ul-act").children().removeClass("act");
+	  $("#news-atc").addClass("act");
+	  $.ajax({
+		  url:httpUrl+"/webSite/moreXinWen",
+		  type:"POST",
+		  dataType:"json",
+		  data:{"currentPage":currentPage},
+		  success:function(data){
+			  if(data.SUCCESS){
+				  var xinWenVos=data.xinWenVos;
+					  var html='<ul class="news-ul fl">'
+						    +'<h3 class="title">公司新闻</h3>';
+				  $.each(xinWenVos,function(i,value){
+					  html+='<li>'
+					        var bg="";
+					        if(value.attr1!=""){
+					        	bg="bg";
+					        }
+							html+='<div class="li-con '+bg+'" onclick="viewInfo(\''+value.id+'\',\'xw\');">';
+							if(bg!="")
+								   html+='<a href="#" class="img"><img src="'+value.attr1+'" alt=""></a>';
+						    html+='<div class="news-li-info">'
+							+'<h4><a class="title">'+value.biaoTi+'</a><span class="date">发布时间：'+formatDate(value.modifyDate)+'</span></h4>'
+							+'<p>'+value.zhaiYao+'</p>'
+							+'</div>'
+							+'</div>'
+							+'</li>';
+				  });
+				  html+='</ul><div class="clear"></div>'
+					  +'<div class="crumbs mart20 marb20" >'
+					  +'<div class="l-row"><div class="page fr">';
+				  html+=pageHtml(data.countSum,data.pageSize,currentPage,"buildNews");
+				  html+='</div>';
+				  html+='</div>';
+				  html+='</div>';
+					$("#main-contant").html(html);
+			  }
+		  }
+	  })
+  }
+  //房产百科
+  function buildBaike(currentPage){
+	  $("#ul-act").children().removeClass("act");
+	  $("#baike-act").addClass("act");
+	  $.ajax({
+		  url:httpUrl+"/webSite/moreYhwzWenDa",
+		  type:"POST",
+		  dataType:"json",
+		  data:{"currentPage":currentPage},
+		  success:function(data){
+			  if(data.SUCCESS){
+				  var baiKeVos=data.baiKeVos;
+					  var html='<ul class="news-ul fl">'
+						    +'<h3 class="title">房产百科</h3>';
+				  $.each(baiKeVos,function(i,value){
+					        html+='<li>'
+							+'<div class="li-con" onclick="viewInfo(\''+value.id+'\',\'bk\');">'
+							+'<div class="news-li-info">'
+							+'<h4><a class="title">'+value.wenTi+'</a><span class="date">发布时间：'+formatDate(value.modifyDate)+'</span></h4>'
+							+'</div>'
+							+'</div>'
+							+'</li>';
+				  });
+				  html+='</ul><div class="clear"></div>'
+					  +'<div class="crumbs mart20 marb20" >'
+					  +'<div class="l-row"><div class="page fr">';
+				  html+=pageHtml(data.countSum,data.pageSize,currentPage,"buildBaike");
+				  html+='</div>';
+				  html+='</div>';
+				  html+='</div>'; 
+					$("#main-contant").html(html);
+			  }
+		  }
+	  })
+  }
+  
+  function viewInfo(id,lx){
+	  if(lx=="xw"){
+		  $.ajax({
+			  url:httpUrl+"/webSite/getXinWen",
+			  type:"POST",
+			  dataType:"json",
+			  data:{"id":id},
+			  success:function(data){
+				  if(data.SUCCESS){
+					  var xinWenVo= data.xinWenVo;
+					  var html='<div class="news-article fl marb30">'
+							  +'<h1 class="title">'+xinWenVo.biaoTi+'</h1>'
+							  +'<span class="date">发布时间：'+formatDate(xinWenVo.modifyDate)+'</span>'
+							  +'<div class="art-con">'
+							  +'<p>文章摘要：'+xinWenVo.zhaiYao+'</p>'
+							  +xinWenVo.neiRong
+							  +'</div>'
+							  +'</div>';
+				$("#main-contant").html(html);
+				  }
+			  }
+		  });
+	  }else if(lx=="zx"){
+		  $.ajax({
+			  url:httpUrl+"/webSite/getYhwzReDian",
+			  type:"POST",
+			  dataType:"json",
+			  data:{"id":id},
+			  success:function(data){
+				  if(data.SUCCESS){
+					  var ziXunVo= data.ziXunVo;
+					  var html='<div class="news-article fl marb30">'
+							  +'<h1 class="title">'+ziXunVo.biaoTi+'</h1>'
+							  +'<span class="date">发布时间：'+formatDate(ziXunVo.modifyDate)+'</span>'
+							  +'<div class="art-con">'
+							  +'<p>文章摘要：'+ziXunVo.zhaiYao+'</p>'
+							  +ziXunVo.neiRong
+							  +'</div>'
+							  +'</div>';
+				$("#main-contant").html(html);
+				  }
+			  }
+		  });
+	  }else if(lx=="bk"){
+		  $.ajax({
+			  url:httpUrl+"/webSite/getYhwzWenDa",
+			  type:"POST",
+			  dataType:"json",
+			  data:{"id":id},
+			  success:function(data){
+				  if(data.SUCCESS){
+					  var baiKeVo= data.baiKeVo;
+					  var html='<div class="news-article fl marb30">'
+							  +'<h1 class="title">'+baiKeVo.wenTi+'</h1>'
+							  +'<span class="date">发布时间：'+formatDate(baiKeVo.modifyDate)+'</span>'
+							  +'<div class="art-con">'
+							  +baiKeVo.huiDa
+							  +'</div>'
+							  +'</div>';
+				      $("#main-contant").html(html);
+				  }
+			  }
+		  });
+	  }
+  }
+  
+  //我们
+  function aboutUs(lx){
+	  $("#ul-act").children().removeClass("act");
+	  $("#about-us"+lx).addClass("act");
+	  $.ajax({
+		  url:httpUrl+"/webSite/getYhwzAboutUs",
+		  type:"POST",
+		  dataType:"json",
+		  data:{"lei_xing":lx},
+		  success:function(data){
+			  if(data.SUCCESS){
+				  if(data.isHave=="1"){
+				  var aboutUsVo= data.aboutUsVo;
+				  var html=aboutUsVo.neiRong;
+			      $("#main-contant").html('<div class="news-article fl marb30">'+html+'</div>');
+				  }else{
+			      $("#main-contant").html('<div class="news-article fl marb30"></div>');
+				  }
+			  }
+		  }
+	  })
+  }
+</script>
+
+</body>
+</html>

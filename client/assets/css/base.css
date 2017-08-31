@@ -101,10 +101,33 @@ a{
 
 .tag-box .tag-status.metro,
 .tag-box span:nth-of-type(3){ background:#e6ebff; color:#549be2;}
+.tag-box span:nth-of-type(4){ background:#fff0eb; color:#ff6666;}
 
 
 .tag-box span:active{ transform:scale(.98) }
 
+.erotip{position: absolute; display: none; z-index: 7; text-align: center; font-size: 16px; color: #666; width: 100%;  }
+.erotip i{font-size: 50px; display:block; margin:100px auto 5px; }
+
+.loadgif{ z-index: 8; background: #fff; padding-bottom: 50px; border-bottom: 1px solid #efefef; position: absolute; font-size: 16px; color: #666; width: 100%; text-align: center;}
+.loadgif i{position: relative; display:block; width: 40px; margin:50px auto 5px; height: 20px; }
+.loadgif i:before,
+.loadgif i:after{position: absolute; content: "";top:0; border-radius: 50%; display: block; width: 10px; height: 10px; background:rgba(0,0,0,.7);}
+.loadgif i:before{ left:0;animation:loadgif1 1s infinite;}
+.loadgif i:after{ right:0;animation:loadgif2 1s infinite; }
+
+@keyframes loadgif1
+{
+0% {transform:translateX(0px)}
+50% {transform:translateX(30px)}
+100% {transform:translateX(0px)}
+}
+@keyframes loadgif2
+{
+0% {transform:translateX(0px)}
+50% {transform:translateX(-30px)}
+100% {transform:translateX(0px)}
+}
 
 /*背景颜色*/
 .qingbg{ background: #33bb9c !important; color: #fff; border-color: #33bb9c}
@@ -193,9 +216,10 @@ a{
 
 
 /*输入框*/
-.textipt-box{ width: 130px; color: #666; margin:0 -3px;}
-.textipt-box input{ background: #fff; font-size: 12px; text-align: center; border:1px solid #e4e4e4; width: 48px; height: 24px; box-sizing: border-box; margin:0 3px; }
-
+.textipt-box{ display: none; color: #666; margin:0 -3px 14px; width: 220px; float: left;}
+.textipt-box input{ background: #fff; font-size: 12px; text-align: center; border:1px solid #e4e4e4; width: 40px; height: 20px; box-sizing: border-box; margin:0 3px; }
+.textipt-box button{cursor: pointer; display:none; height: 20px; background: #333; color: #efefef; font-size: 12px; line-height: 20px; padding:0 5px; }
+.textipt-box button.act{ display: inline-block; }
 /*input选项*/
 .checkbox{position: relative;display: inline-block; padding-left: 24px; height: 14px; line-height: 14px;}
 .checkbox input,
@@ -262,8 +286,8 @@ a{
 .sort-arrow:after{left:3px; content: ""; position: absolute; border:4px solid transparent; border-left-width: 4px; border-right-width: 4px; border-bottom-color: #aaa; }
 .sort-arrow:before{ top:-2px; }
 .sort-arrow:after{transform: rotate(180deg); bottom: -2px;}
-.sort-arrow-top:before{ border-bottom-color: #ff6666; }
-.sort-arrow-bot:after{ border-bottom-color: #ff6666; }
+.sortarrowtop:before{ border-bottom-color: #ff6666; }
+.sortarrowbot:after{ border-bottom-color: #ff6666; }
 .sort-line:before{top:7px; content: "";position: absolute; width: 10px; height: 2px; background: #ccc;box-shadow: 0 4px 0 #ccc, 0 -4px 0 #ccc }
 
 /*表格*/
@@ -316,9 +340,18 @@ a{
 .old-close-btn{ position: absolute; right: 15px;  cursor: pointer;}
 .old-close-btn i{font-size: 26px;}
 
-.popupbg{position: fixed; top:0; left:0; width: 100%; height: 100%; background: rgba(0,0,0,.3); z-index: 10;}
-.popupbox{ position: absolute; left: 20px; top:20px; }
-
+.popupbg{position: fixed; display: none;  top:0; left:0; width: 100%; height: 100%; background: rgba(0,0,0,.5); z-index: 19;}
+.popupbox{position: absolute; display: none; width: 400px; left: 20px; top:20px; padding:10px 20px; border-radius: 5px; background: #fff;box-shadow: 0 0 15px rgba(0,0,0,.3); z-index: 20}
+.popupbox .title{position: relative; border-bottom: 1px solid #efefef; padding-bottom: 10px; }
+.popupbox .title h2{ text-align: center; font-weight: bold; font-size: 22px; }
+.popupbox .title .close{ position: absolute; cursor: pointer; right: -5px; top:-5px; font-size: 20px; color: #999; }
+.popupbox .citylist{ font-size: 16px; padding:10px 0;}
+.popupbox .citylist .con{ overflow: hidden;}
+.popupbox .citylist .con a{ display: inline-block; margin:0 5px; font-size: 16px; cursor: pointer;}
+.popupbox .citylist .con a:hover{color: #ff6666;}
+.erotips{ width: 300px; }
+.popupbox .tipscon{ text-align: center; padding:20px 0; font-size: 15px; }
+.popupbox.sel-city{  }
 
 
 

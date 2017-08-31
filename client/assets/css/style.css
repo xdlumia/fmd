@@ -12,7 +12,7 @@
 .header-top{ overflow: hidden;}
 .header-top .logo{ display: inline-block; height: 60px; float: left; }
 .header-top .logo img{ display: block; height: 100%; }
-.header-top .loca{ padding:0 10px; height: 30px; text-align: center; line-height: 30px; color: #fff;font-size:12px; margin-top: 15px; margin-left: 20px; background: rgba(0, 0, 0, .5); display: inline-block; border-radius: 15px; }
+.header-top .loca{ padding:0 10px; height: 30px; text-align: center; cursor: pointer; line-height: 30px; color: #fff;font-size:12px; margin-top: 15px; margin-left: 20px; background: rgba(0, 0, 0, .5); display: inline-block; border-radius: 15px; }
 .header-top .loca i{ font-size: 14px; color: #eee; margin-right: 3px; }
 .header-top .nav{padding:15px; box-sizing: border-box;}
 .header-top .nav li{ padding:0 15px; float: left; border:1px solid transparent; height:30px; box-sizing: border-box; line-height: 30px; }
@@ -40,12 +40,12 @@
 
 .content{ padding:0 0 30px 0; }
 
-
+.esfh{ height: 582px; }
 .hot-house h3.title{ font-size: 28px; color: #333; line-height: 70px; margin-top: 10px; }
-.hot-house-box{ overflow:hidden; margin-left:-10px; margin-right: -10px; }
+.hot-house-box{position: relative; overflow:hidden; margin-left:-10px; margin-right: -10px; }
 .hot-house-box li{ padding:10px; box-sizing: border-box; cursor: pointer; }
 .hot-house-box li .hot-house-img{display: block;position: relative; background: url(../images/loading.png) no-repeat center center #ddd; overflow: hidden;  }
-.hot-house-box li .hot-house-img img{ display: block; width: 100%; height: 100%; opacity:1;transition: .2s; object-fit: cover; }
+.hot-house-box li .hot-house-img img{ display: block; width: 100%; height: 100%; opacity:1; object-fit: cover; }
 .hot-house-box li .hot-house-img img:hover{opacity: .9;}
 .hot-house-box li .hot-house-img .title-info{position: absolute; transition:all .2s; left:50%; top:50%; transform:translate(-50%,-50%);  border-radius: 20px;width: 160px; height: 40px; background: rgba(0,0,0,.6); color: #fff; line-height: 40px; text-align: center;}
 .hot-house-box li .hot-house-img .name{position: absolute; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; left:50%; top:50%; transform:translate(-50%,-50%); font-size: 14px;line-height: 40px; text-align: center; color: #fff;  width: 160px; height: 40px;transition:all .2s; display: block;  }
@@ -60,18 +60,17 @@
 .news-box h4.title{ font-weight: bold; font-size: 14px; color: #333; margin-top: 12px; margin-bottom: 6px; }
 .news-box h4.title a{ color: #999; font-weight: normal; font-size: 12px; }
 .news-box .new-li{font-size: 12px; color: #666; display: block;height: 30px; line-height:30px;}
-.news-box .new-li a{ width: 80%; display: inline-block;  text-overflow:ellipsis; white-space: nowrap; overflow: hidden;}
+.news-box .new-li a{ width: 62%; display: inline-block;  text-overflow:ellipsis; white-space: nowrap; overflow: hidden;}
 .news-box .new-li a:hover{ color: #FF6633 }
 .news-box .new-li .date{ float: right; color: #bbb;}
-
 .esfh .hot-house-img{ height: 215px; }
 
 /*热门房源*/
 .foucs-tab{position: absolute; right: 0; top:0; color: #fff; font-size:12px; line-height: 20px; padding:0 8px; letter-spacing: 1px; background: #ff6666;}
 .hot-house-box .gdshadow{font-weight: bold;}
-.hot-house-info .info{ overflow: hidden; }
+.hot-house-info .info{ overflow: hidden; white-space: nowrap; }
 .hot-house-info .info span{line-height: 12px; float: left; margin-right: 10px;padding-right: 10px; border-right: 1px solid #ddd }
-.hot-house-info .info span:last-child{ border:none; }
+.hot-house-info .info span:last-child{ border:none; width: 150px; }
 .hot-house-info .hh-price{ margin-top: 10px; }
 .hot-house-info .hh-price .hh-sum{ font-size: 12px; }
 .hot-house-info .hh-price .hh-sum b{ font-size: 14px; }
@@ -79,7 +78,7 @@
 .hot-house-info .info-box span{ display: block; }
 .hot-house-img:hover img{  opacity: .8 }
 
-
+.ihotsq{ height: 400px;  }
 
 
 /*热门楼盘*/
@@ -105,7 +104,7 @@
 .tuijian{ background:#f2f2f2; overflow: hidden; padding-top: 20px; padding-bottom: 30px; }
 .tuijian h3.title{ font-size: 24px; font-weight: bold; line-height: 50px; }
 .tuijian .hot-house-info .foucs-tab{ height:18px; line-height: 17px; top:-3px;}
-
+.xstuijian .hot-house-img{ height: 150px; }
 
 /*首页资讯幻灯片*/
 .slide-container{ overflow: hidden; position: relative; }
@@ -129,6 +128,7 @@
     box-sizing: content-box;
 }
 .slide-item{
+    background: url(../images/loading.png) no-repeat center center #ddd; 
 	-webkit-flex-shrink: 0;
     -ms-flex: 0 0 auto;
     flex-shrink: 0;
@@ -150,8 +150,8 @@
 }
 .slide-container .slide-item img{ display:block; width: 100%; height: 100%; }
 .slide-container .slide-info{position: absolute; bottom: 0; left:0; width: 100%; height: 150px; padding:20px; background:rgba(0,0,0,.5); box-sizing: border-box;}
-.slide-container .slide-info .slide-title{ font-weight: bold;  color: #fff; margin-bottom: 10px;}
-.slide-container .slide-info .slide-con{ color: #f2f2f2; line-height: 20px; }
+.slide-container .slide-info .slide-title{ overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: bold;  color: #fff; margin-bottom: 10px;}
+.slide-container .slide-info .slide-con{ overflow: hidden;height: 60px; word-break: break-word; color: #f2f2f2; line-height: 20px; }
 .slide-container .slide-foucs { position: absolute; bottom: 5px; left:20px; overflow: hidden;  z-index: 3;}
 .slide-container .slide-foucs .slide-bullet{ display: inline-block;width:10px; height: 10px; background: #999;border-radius: 5px; margin-right: 8px;}
 .slide-container .slide-foucs .slide-active{ background: #fff; }
@@ -180,12 +180,17 @@
 .serach-sel .sel-tab a.act{ color: #ff6666; }
 .serach-box{position: relative; overflow: hidden; width: 710px; height: 45px; background: #fff; margin-top: 15px; font-size: 14px; box-shadow: 0 0 5px rgba(0,0,0,.1)}
 .serach-box .ipttext{ width: 100%; height: 100%;color: #666; float: left; padding-left:20px; box-sizing: border-box;}
-.serach-box button{ position: absolute; cursor: pointer; text-align: center; width: 50px; right: 0; top:0; height: 45px; background:transparent; }
-.serach-box button i{ font-size: 20px;color: #999;}
+.serach-box .fbtn{ position: absolute; cursor: pointer; text-align: center; width: 50px; right: 0; top:0; height: 45px; background:transparent; }
+.serach-box .fbtn i{ font-size: 20px;color: #999;}
 
 
 .news .hot-house-img .morebtn{ position: absolute; right: 20px; bottom: 8px; color: #fff; font-size: 12px; z-index: 1; }
 .news .hot-house-img .morebtn:hover{ text-decoration:underline; }
+.news .slideimg{ height: 390px; }
+.news .slideimg img{object-fit: cover; }
+.imgh170 .hot-house-img{ height: 170px; }
+
+
 /*条件筛选*/
 .container{ background: #fff; padding:30px 0; overflow: hidden; }
 .filter-main{ background: #fafafa;padding:15px 20px; box-sizing: border-box; font-size: 12px; box-shadow:  0 0 5px rgba(0,0,0,.1)}
@@ -197,21 +202,23 @@
 .filter-main .fb-lst .fl-sel span.act{color: #ff6666;}
 .filter-main .fb-lst .fl-sel span.act i{transform: rotate(180deg);vertical-align: 0;  }
 .filter-main .fb-lst .option-list{ margin-left: 55px;border-bottom: 1px solid #efefef;}
-.filter-main .fb-lst a{color: #333; margin-right: 13px; line-height:14px; display: inline-block;} 
-.filter-main .fb-lst a:hover{ text-decoration:underline; color: #ff6666;}
+.filter-main .fb-lst a{color: #333; margin-right: 13px; line-height:14px; display: inline-block; transition:all .0s; margin-bottom: 5px;} 
+.filter-main .fb-lst a:hover{ text-decoration:underline;}
 .filter-main .fb-lst a.act{ color: #ff6666;}
-.filter-main .fb-lst .sub-list{ margin-left: 55px;padding:5px 0; border-bottom: 1px solid #efefef; margin-bottom: 15px;}
-.filter-main .fb-lst .sub-list a{ line-height: 25px; }
+.filter-main .fb-lst .sub-list{ border-top:1px solid #efefef; display: none; }
+.filter-main .fb-lst .sub-list a{ line-height: 14px; margin-top: 5px; cursor: pointer; }
 .filter-main .fb-lst .sub-list b{ margin-right: 5px; }
-.filter-main .fb-lst .option-list{line-height: 14px; height: 20px; padding-bottom: 10px;}
-.filter-main .fb-lst .option-list .checkbox-list{width: 925px; height:35px; overflow: hidden; float: left;}
+.filter-main .fb-lst .option-list{line-height: 14px;  margin-top: 5px; margin-bottom: 15px;}
+.filter-main .fb-lst .option-list .checkbox-list{width: 925px; height:28px; overflow: hidden; float: left;}
 .filter-main .fb-lst .option-list .checkbox-list .select-box{ float: left; margin-right: 50px; margin-top: -5px;}
 .filter-main .fb-lst .option-list .checkbox-list .w200{ width: 200px; }
-.filter-main .fb-lst .option-list .checkbox{ float: left; width: 125px; margin-bottom:25px; }
+.filter-main .fb-lst .option-list .checkbox{ float: left; width: 125px; margin-bottom:15px; }
 .filter-main .fb-lst .option-list .more-btn{ color: #999; cursor: pointer; }
+.filter-main .fb-lst .option-list .more-btn.act{color: #ff6666;}
+.filter-main .bb-list-qt{ height: 30px; }
 
-
-
+.cb-box{overflow: hidden; float: left;}
+.hideinput input{ border:1px solid #ccc; }
 
 /*商业买卖排序*/
 .order-main{ padding:10px 15px; background: #fafafa; overflow: hidden; margin-top: 20px; border-bottom:2px solid #ff6666;}
@@ -226,16 +233,20 @@
 .order-main .sort-box{ font-size: 12px; color: #999; line-height: 32px; }
 .order-main .sort-box .sort-item{ margin-left:10px; cursor: pointer; }
 .order-main .sort-box .sort-item.act{ color: #ff6666; }
+.order-main .sort-box .sort-item:nth-of-type(1) i,
+.order-main .sort-box .sort-item:nth-of-type(2) i,
+.order-main .sort-box .sort-item:nth-of-type(4) i{display: none;}
 
 
 /*二手房*/
 .house-sum{ line-height: 32px; font-size: 16px; font-size: #666;}
 .zhuzhai-info{ overflow: hidden; }
 .zhuzhai-info span{line-height: 12px; color: #666; float: left; margin-right: 10px; padding-right: 10px; border-right: 1px solid #ddd  }
-.zhuzhai-info .al{line-height: 12px;  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 130px; color: #666; float: left; margin-right: 10px; padding-right: 10px; border-right: 1px solid #ddd  }
+.zhuzhai-info .al{line-height: 12px; cursor: pointer;  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 130px; color: #666; float: left; margin-right: 10px; padding-right: 10px; border-right: 1px solid #ddd  }
 .zhuzhai-info span:last-child{ border: none; }
-.zhuzhai-info .sl a{ color: #666; }
+.zhuzhai-info .sl a{ color: #666; cursor: pointer; }
 .zhuzhai-info a:hover{ color: #ff6666; }
+.ershoufang{ min-height: 500px;position: relative; }
 .ershoufang .tag-box{margin-top: 6px; margin-left: -5px; }
 
 /*小区列表页*/
@@ -259,7 +270,7 @@
 .xq-left .xd-banner{ width: 100%; height: 490px; }
 .xq-left .xd-banner .slide-wrap{height: 400px;}
 .xq-left .xd-banner .slide-foucs{height: 80px;left: 40px; right: 40px; bottom: 0;}
-.xq-left .xd-banner .slide-foucs .slide-bullet{cursor: pointer; width: 120px; margin-right: 8px; height: 100%; margin-right: 8px; box-sizing: border-box; background: #000;border-radius:0; }
+.xq-left .xd-banner .slide-foucs .slide-bullet{background: url(../images/loading.png) no-repeat center center #ddd;cursor: pointer; width: 120px; margin-right: 8px; height: 100%; margin-right: 8px; box-sizing: border-box; background: #000;border-radius:0; }
 .xq-left .xd-banner .slide-foucs .slide-foucs-wrap{ position: absolute; left: 0; height: 100%; transition:all .2s; }
 .xq-left .xd-banner .slide-btn{display: block;  bottom: 0; left:0px; right: 0px; top:auto; transform: translate(0,0); height: 80px;}
 .xq-left .xd-banner .slide-btn span{ background: #333; opacity: 1;}
@@ -276,13 +287,13 @@
 .xq-block-con .xq-attr-con li .title{ color: #333; }
 .xq-block-con .xq-attr-con .tags-box span{ border:1px solid #efefef; display: inline-block; margin-bottom: 8px; padding:0 10px; line-height: 27px; background: #fafafa; color: #666; text-align: left; margin-right: 5px; }
 .xq-block-con .xq-attr-con .tags-p{ line-height: 24px;  margin-bottom:22px;}
-.xq-fenjian .xq-block-con .xq-attr img{ width: 290px; height: 200px; }
+.xq-fenjian .xq-block-con .xq-attr img{background: url(../images/loading.png) no-repeat center center #ddd; display: block; width: 290px; height: 200px; }
 .xq-fenjian .xq-block-con .xq-attr-con{ margin-left: 310px; color: #666; }
 .xq-fenjian .xq-block-con .xq-attr-con div{ line-height: 40px; }
 .xq-fenjian .xq-block-con .xq-attr-con div span:first-child{ font-weight: bold; }
 .xq-fangyuan .imgbox{ margin:-5px; overflow: hidden; margin-bottom: 35px;}
 .xq-fangyuan .imgbox span{ position: relative; width:50%; height: 200px; overflow: hidden; float: left; padding:5px; box-sizing: border-box;}
-.xq-fangyuan .imgbox span img{ display: block; width: 100%; height: 100% }
+.xq-fangyuan .imgbox span img{ display: block; width: 100%; height: 100%;background: url(../images/loading.png) no-repeat center center #ddd;  }
 .xq-fangyuan .imgbox span:first-child{ width: 100%; height: 400px; }
 .xq-fangyuan .imgbox span em{ position: absolute; right: 5px; bottom:5px; height: 30px; background: rgba(0,0,0,.5); color: #fff; padding:0 8px; line-height: 30px; }
 .xq-ico-tese{ overflow: hidden; margin-bottom: 30px; color: #666; margin-right: 10px;}
@@ -352,7 +363,7 @@
 .maker-box .markerhover em.iconfont{ font-size: 14px; float: right; }
 .maker-box .markerhover .address{clear: both; font-size: 14px; color: #999;}
 
-.maker-box span.iconfont{position: absolute; left:-10px; top:-10px; background: url(../images/marker.png) no-repeat center center; width: 40px; height: 40px;font-size: 16px; text-align: center; line-height: 30px; color: #fff; }
+.maker-box span.iconfont{position: absolute; left:0px; top:0px; background: url(../images/marker.png) no-repeat center center; width: 40px; height: 40px;font-size: 16px; text-align: center; line-height: 30px; color: #fff; }
 .maker-box.act,
 .maker-box.active{z-index: 9 !important}
 .maker-box.act span.iconfont{ background-image: url(../images/markerhover.png);  }
@@ -368,7 +379,7 @@
 
 /*商业买卖列表页*/
 .content-list li{ padding:20px 0; overflow: hidden;position: relative; border-bottom: 1px solid #efefef;}
-.content-list li .conlist-img{ width: 380px;height: 210px; overflow: hidden; display: block; margin-right: 20px; background: url(../images/loading.png) no-repeat center center #ddd; }
+.content-list li .conlist-img{ width: 380px;height: 215px; overflow: hidden; display: block; margin-right: 20px; background: url(../images/loading.png) no-repeat center center #ddd; }
 .content-list li .conlist-img img{ display: block; width: 100%; transition: .3s; }
 .content-list li .conlist-img img:hover{ transform:scale(1.02); }
 .content-list li .con-list-info{ float: left; }
@@ -384,6 +395,7 @@
 .content-list .price{position: absolute; right: 20px; top:20px}
 .content-list .price span{ display: block; text-align: right; }
 .content-list .price .total{ font-weight: bold; font-size: 22px; color: #ff6666; }
+.content-list .price .total em{ font-size: 14px; }
 .content-list .price .unit{ margin-top: 20px; color: #666; }
 
 
@@ -664,7 +676,8 @@
 .news-ul li .img img{ display:block; width: 100%; }
 .news-ul li .li-con:nth-child(1){ background: #fafafa }
 .news-ul li .bg .news-li-info{ margin-left:150px;  }
-.news-ul li .news-li-info h4 .title{ font-size: 16px; font-weight: bold; color: #666; }
+.news-ul li .news-li-info h4 .title{ font-size: 16px; font-weight: bold; color: #666; width: 72%; float: left; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; cursor: pointer; }
+.news-ul li .news-li-info h4 .title:hover{ color: #ff6666; }
 .news-ul li .news-li-info h4 .date{ font-size: 12px; color: #999; float: right; }
 .news-ul li .news-li-info p{ margin-top: 22px; color: #999; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .news-article{ margin-left: 20px; width: 950px; box-shadow: 0 0 10px rgba(0,0,0,.1); padding:18px; box-sizing: border-box; }
@@ -672,14 +685,15 @@
 .news-article .date{ font-size: 12px; color: #999; line-height: 30px;}
 .news-article .art-con{ font-size: 14px;color: #666; line-height: 22px; }
 .news-article .art-con p{ margin:10px 0; }
-.news-article .art-con img{ margin:10px 0; max-width: 100%; display: block;}
+.news-article img{ max-width: 100%; display: inline-block;}
 
 /*底部*/
-.footer{ background: #333; padding:0 0 50px 0; }
+.footer{ background: #333; padding: 0; }
 .footer .l-row{ overflow: hidden; }
 .footer .footer-nav{ background: #222; overflow: hidden; font-size: 14px; line-height: 50px; }
 .footer .footer-nav li{ margin-right: 30px; float: left; }
 .footer .footer-nav li a{ color: #efefef; }
+.footer .copyright{ color: #ccc; font-size: 12px; text-align: center; line-height: 50px; }
 .footer-user{ color: #999; font-size: 14px; padding-top: 20px; }
 /*.footer .copyright{ font-size: 12px; color: #999; margin-top: 15px; }
 .footer .contact-fl{ margin-right: 15px;}
